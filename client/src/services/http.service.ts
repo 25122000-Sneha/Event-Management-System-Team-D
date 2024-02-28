@@ -30,6 +30,7 @@ export class HttpService {
   // }
   getResources():Observable<any> {
    //complete this function
+   return this.http.get(`${this.serverName}/api/planner/resources`);
   
   }
   addAllocateResource(data:any):Observable<any>{
@@ -37,6 +38,7 @@ export class HttpService {
   }
  
   addResource(data : any): Observable<any> {
+    return this.http.post(`${this.serverName}/api/planner/resource`,data);
 
   }
  
