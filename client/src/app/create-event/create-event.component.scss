@@ -1,0 +1,59 @@
+.conatainer2{
+    margin: auto;
+    width: 50%;
+ 
+}
+.banner{
+ 
+    text-align: center;
+    margin-top: 5px;
+    padding: 3px;
+    color: white;
+    width: auto;
+    background-color: #132257;
+}
+ 
+h3{
+    
+    text-align: center;
+    border-radius: 5px;
+ 
+}
+.btn btn-success{
+    margin: auto;
+}
+.form{
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 10px 10px 100px 10px #132257,-10px  -10px 100px 10px #132257;
+    margin: 3px;
+    padding: 10px;
+  
+
+    /* background-image: linear-gradient(to right, #b6fbff, #83a4d4); */
+ 
+   
+    margin-bottom: 10px;
+ 
+}
+input,select{
+    box-shadow: 3px 3px;
+}
+ 
+.mb-5{
+    text-align: center;
+}
+label{
+   
+    font-size: 18px;
+}
+.btn:hover{
+     
+        box-shadow: 5px 5px;
+        box-shadow: rgb(16, 125, 161);
+        background-color:#1e183a;
+        border-radius: 0;
+        scale: 1.1;
+        border-radius: 3px;
+ 
+}
