@@ -54,12 +54,12 @@ export class HttpService {
  
   }
   registerUser(details:any):Observable<any> {
-   //complete this function
-   console.log(details);
-   
-  
-  }
-  getAllUser():Observable<any>{
-   
-  }
+    //complete this function
+    console.log(details);
+    
+    return this.http.post(`${this.serverName}/api/user/register`,details);
+   }
+   getAllUser():Observable<any>{
+     return this.http.get(`${this.serverName}/api/users`);
+   }
 }
