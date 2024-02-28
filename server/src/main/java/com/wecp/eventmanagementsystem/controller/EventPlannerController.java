@@ -16,25 +16,33 @@ import java.util.List;
 
 public class EventPlannerController {
 
+    @Autowired
+    private EventService eventService;
 
-    @PostMapping("/api/planner/event")
+     @PostMapping("/api/planner/event")
     public ResponseEntity<Event> createEvent(@RequestBody Event event) {
         // create event and return created event with status code 201 (CREATED)
+
+        return new ResponseEntity<Event>(eventService.createEvent(event), HttpStatus.CREATED);
     }
 
     @GetMapping("/api/planner/events")
     public ResponseEntity<List<Event>> getAllEvents() {
         // get all events and return the list with status code 200 (OK)
+        return new ResponseEntity<>(eventService.getAllEvents(),HttpStatus.OK);
     }
 
     @PostMapping("/api/planner/resource")
     public ResponseEntity<Resource> addResource(@RequestBody Resource resource) {
         // add resource and return added resource with status code 201 (CREATED)
+        return new ResponseEntity<>(resourceService.addResource(resource),HttpStatus.CREATED);
+
     }
 
     @GetMapping("/api/planner/resources")
     public ResponseEntity<List<Resource>> getAllResources() {
         // get all resources and return the list with status code 200 (OK)
+        return new ResponseEntity<>(resourceService.getAllResources(),HttpStatus.OK);
     }
 
     @PostMapping("/api/planner/allocate-resources")

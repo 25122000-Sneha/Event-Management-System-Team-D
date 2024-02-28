@@ -20,5 +20,6 @@ public class StaffController {
     @PutMapping("/api/staff/update-setup/{eventId}")
     public ResponseEntity<Event> updateEventSetup(@PathVariable Long eventId, @RequestBody Event updatedEvent) {
         // update the event setup and return the updated event with status code 200 ok
+        return new ResponseEntity<>(eventService.updateEventSetup(eventId, updatedEvent),HttpStatus.OK);
     }
 }
