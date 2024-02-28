@@ -3,6 +3,7 @@ package com.wecp.eventmanagementsystem.service;
 import com.wecp.eventmanagementsystem.entity.Allocation;
 import com.wecp.eventmanagementsystem.entity.Event;
 import com.wecp.eventmanagementsystem.entity.Resource;
+import com.wecp.eventmanagementsystem.repository.AllocationRepository;
 import com.wecp.eventmanagementsystem.repository.EventRepository;
 import com.wecp.eventmanagementsystem.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,10 @@ import java.util.List;
 
 public class ResourceService {
 
-
+    @Autowired
+    ResourceRepository resourceRepository;
+    @Autowired
+    AllocationRepository allocationRepository;
     public Resource addResource(Resource resource) {
       // add resouce to database
     }
@@ -26,6 +30,12 @@ public class ResourceService {
     public void allocateResources(Long eventId, Long resourceId, Allocation allocation) {
         // check if resource is available or not
         // if resouce is available then allocate the resource to event  and set availability to false
+        Resource resource = resourceRepository.findById(resourceId).get();
+        if(resource != null){
+            resource.setAvailability(false);
+            resourceRepository.save(resource);//updating the existing resourse that it is not available
+            allocationRepository.save(allocation);//now save the data
+        }
 
     }
 }

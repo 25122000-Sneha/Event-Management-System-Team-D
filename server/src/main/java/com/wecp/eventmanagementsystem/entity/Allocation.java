@@ -5,13 +5,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
-
+@Entity
 public class Allocation {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long allocationID;
 
+    @ManyToOne
+    @JoinColumn(name = "eventID")
     private Event event;
 
+    @OneToOne
+    @JoinColumn(name = "resourceID")
     private Resource resource;
 
     private int quantity;
