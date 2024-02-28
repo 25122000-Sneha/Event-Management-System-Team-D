@@ -33,7 +33,8 @@ export class HttpService {
   
   }
   addAllocateResource(data:any):Observable<any>{
-   
+    return this.http.post(`${this.serverName}/api/planner/allocate-resources`,data,{params: {eventId:data.event.eventID, resourceId: data.resource.resourceID}})
+ 
   }
  
   addResource(data : any): Observable<any> {
