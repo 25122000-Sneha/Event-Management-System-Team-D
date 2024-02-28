@@ -2,12 +2,17 @@ package com.wecp.eventmanagementsystem.entity;
 
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.List;
 
 
+@Entity
 public class Event {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventID;
 
     private String title;
@@ -16,7 +21,13 @@ public class Event {
     private String location;
     private String status;
 
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Allocation> allocations;
+
+    @ManyToOne
+    @JoinColumn(name = "userID")
+    private User user;
 
     public Long getEventID() {
         return eventID;
@@ -73,4 +84,14 @@ public class Event {
     public void setAllocations(List<Allocation> allocations) {
         this.allocations = allocations;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
 }

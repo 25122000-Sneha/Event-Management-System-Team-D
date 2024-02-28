@@ -31,5 +31,6 @@ public class RegisterAndLoginController {
     public ResponseEntity<LoginResponse> loginUser(@RequestBody LoginRequest loginRequest) {
          // login user and return the login response with status code 200 ok
         // if authentication fails, return status code 401 unauthorized
+        return null;
     }
 }
