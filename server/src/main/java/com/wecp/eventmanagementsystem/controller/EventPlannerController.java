@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+@RestController
 public class EventPlannerController {
 
+
+    @Autowired
+    private ResourceService resourceService;
 
     @PostMapping("/api/planner/event")
     public ResponseEntity<Event> createEvent(@RequestBody Event event) {
@@ -30,11 +34,14 @@ public class EventPlannerController {
     @PostMapping("/api/planner/resource")
     public ResponseEntity<Resource> addResource(@RequestBody Resource resource) {
         // add resource and return added resource with status code 201 (CREATED)
+        return new ResponseEntity<>(resourceService.addResource(resource),HttpStatus.CREATED);
+
     }
 
     @GetMapping("/api/planner/resources")
     public ResponseEntity<List<Resource>> getAllResources() {
         // get all resources and return the list with status code 200 (OK)
+        return new ResponseEntity<>(resourceService.getAllResources(),HttpStatus.OK);
     }
 
     @PostMapping("/api/planner/allocate-resources")
