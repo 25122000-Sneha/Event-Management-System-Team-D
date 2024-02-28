@@ -15,8 +15,7 @@ import java.util.List;
 
 public class ResourceService {
 
-    @Autowired
-    ResourceRepository resourceRepository;
+
     @Autowired
     AllocationRepository allocationRepository;
     public Resource addResource(Resource resource) {

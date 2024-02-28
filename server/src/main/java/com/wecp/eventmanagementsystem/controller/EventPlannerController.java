@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@RestController
 public class EventPlannerController {
-
-
+    @Autowired
+    private ResourceService resourceService;
+    
     @PostMapping("/api/planner/event")
     public ResponseEntity<Event> createEvent(@RequestBody Event event) {
         // create event and return created event with status code 201 (CREATED)
@@ -42,7 +43,7 @@ public class EventPlannerController {
             @RequestBody Allocation allocation) {
 
         // allocate resources for the event and return a success message with status code 201 (CREATED)
-
+        resourceService.allocateResources(eventId, resourceId, allocation);
         return new ResponseEntity<>("{\"message\": \"Resource allocated successfully for Event ID: " + eventId + "\"}", HttpStatus.CREATED);
     }
 }
