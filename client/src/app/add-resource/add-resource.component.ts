@@ -71,7 +71,8 @@ export class AddResourceComponent implements OnInit {
  
   getResources() {
      //complete this function
-     this.resourceList$  = this.httpService.getResources();
+     this.resourceList$  = this.httpService.GetAllResources();
+
   }
   markFormGroupTouched(itemForm: FormGroup<any>) {
     throw new Error('Method not implemented.');

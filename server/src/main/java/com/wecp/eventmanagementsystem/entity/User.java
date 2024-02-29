@@ -1,8 +1,6 @@
 package com.wecp.eventmanagementsystem.entity;
 
-
 import javax.persistence.*;
-
 
 @Entity
 @Table(name="users")

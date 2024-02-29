@@ -54,7 +54,7 @@ export class CreateEventComponent implements OnInit {
     if(this.itemForm.valid){
       console.log(this.itemForm.value);
       
-      this.httpService.addEvent(this.itemForm.value).subscribe((data: any)=>{
+      this.httpService.createEvent(this.itemForm.value).subscribe((data: any)=>{
         console.log("addEvent");
         this.success$ = of("Event created successfully.")
       },(error)=>{

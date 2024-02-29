@@ -57,7 +57,7 @@ export class ResourceAllocateComponent {
   onSubmit() {
     //complete this function
     if(this.itemForm.valid){
-      this.httpService.addAllocateResource(this.itemForm.value).subscribe(
+      this.httpService.allocateResources(this.itemForm.get('event'),this.itemForm.get('resource'),this.itemForm.value).subscribe(
         (data: any)=>{
           this.showMessage = true;
           this.responseMessage = 'Allocation successfully done';
@@ -72,12 +72,12 @@ export class ResourceAllocateComponent {
 
   getEvent() {
     //complete this function
-    this.eventList$ = this.httpService.getEvents();
+    this.eventList$ = this.httpService.GetAllevents();
   }
 
   getResources() {
     //complete this function
-    this.resourceList$ = this.httpService.getResources();
+    this.resourceList$ = this.httpService.GetAllResources();
     this.filteredResourceList$ = this.resourceList$;
   }
 

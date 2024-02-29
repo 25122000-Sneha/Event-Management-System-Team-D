@@ -1,6 +1,8 @@
 .conatainer2{
     margin: auto;
     width: 50%;
+    margin-bottom: 100px;
+   
  
 }
 .banner{
@@ -9,11 +11,11 @@
     margin-top: 5px;
     padding: 3px;
     color: white;
-    width: auto;
+    width: 100%;
     background-color: #132257;
 }
  
-h3{
+h5{
     
     text-align: center;
     border-radius: 5px;
@@ -23,16 +25,13 @@ h3{
     margin: auto;
 }
 .form{
-    border: 1px solid;
+    
     border-radius: 10px;
-    box-shadow: 10px 10px 100px 10px #132257,-10px  -10px 100px 10px #132257;
+    box-shadow: 10px 10px 20px #6699CC;
     margin: 3px;
+    margin-bottom: 10px;
     padding: 10px;
-  
-
     /* background-image: linear-gradient(to right, #b6fbff, #83a4d4); */
- 
-   
     margin-bottom: 10px;
  
 }

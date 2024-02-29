@@ -1,3 +1,65 @@
-<div class="row text-center">
+<!-- <div class="row text-center">
 <h1 class="text-capitalize">Event Management System</h1>
+</div> -->
+<div class="card">
+    <div class="card-header">
+        <h2>Dashboard</h2>
+    </div>
+    <div class="card-body">
+        <button class="btn" [class.active]="showUserTable" (click)="showUserTable=true">Users</button>
+        <button class="btn" [class.active]="!showUserTable" (click)="showUserTable=false">Events</button>
+        <div *ngIf="showUserTable">
+            <table class="user-table">
+                <thead>
+                  <tr>
+                    <th>User id</th>
+                    <th>user Name</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of userList$|async">
+                    
+                    <td>{{item.userID}}</td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.email}}</td>
+                    
+                    <td><button type="button" class="btn2">Edit</button></td>
+                    <td><button type="button" class="btn3">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+        <div *ngIf="!showUserTable">
+            <table class="event-table">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>description</th>
+                    <th>date</th>
+                    <th>location</th>
+                    <th>status</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let event of eventList$|async">
+                      <td>{{event.eventID}}</td>
+                      <td>{{event.title}}</td>
+                      <td>{{event.description}}</td>
+                      <td>{{event.dateTime | date}}</td>
+                      <td>{{event.location}}</td>
+                      <td>{{event.status}}</td>
+                      <td><button class="btn2">Edit</button></td>
+                      <td><button class="btn3" >Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+    </div>
 </div>

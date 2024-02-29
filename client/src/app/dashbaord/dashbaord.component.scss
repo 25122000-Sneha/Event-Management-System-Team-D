@@ -1,0 +1,93 @@
+
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .user-table th, .user-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .user-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .event-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .event-table th, .event-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .event-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  a.task-list {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  a.task-list:hover {
+    text-decoration: underline;
+  }
+  
+
+  
+  .card-header {
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+  .btn2:hover{
+    background-color: #e9b20c;
+    border: 1px solid;
+    border-radius: 3px;
+  }
+  .btn2{
+    background-color: #ffdb70;
+    border: 1px solid;
+   
+
+  }
+  .btn3:hover{
+    background-color: #e71515;
+    border: 1px solid;
+    border-radius: 3px;
+  }
+  .btn3{
+    background-color: #ff7171;
+    border: 1px solid;
+    
+  }
+
+  .card-body {
+    margin-top: 10px;
+  }
+  
+  .btn {
+    background-color:grey;
+    border: none;
+    border-radius: 0px;
+    margin-right: 1px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  .btn.active{
+    background-color:  #1b0ca2;
+
+  }
+  

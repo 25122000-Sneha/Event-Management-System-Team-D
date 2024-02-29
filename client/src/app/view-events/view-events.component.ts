@@ -49,7 +49,7 @@ export class ViewEventsComponent implements OnInit {
   }
   searchEvent() {
     //complete this function
-    this.eventObj$ = this.httpService.getEventById(this.inputMessage);
+    this.eventObj$ = this.httpService.GetEventdetails(this.inputMessage);
   }
 
 
