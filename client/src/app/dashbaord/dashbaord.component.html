@@ -7,7 +7,7 @@
     </div>
     <div class="card-body">
         <button class="btn" [class.active]="showUserTable" (click)="showUserTable=true">Users</button>
-        <button class="btn" [class.active]="!showUserTable" (click)="showUserTable=false">Events</button>
+        <button class="btn" [class.active]="!showUserTable" (click)="showUserTable=false" *ngIf=" roleName === 'PLANNER'">Events</button>
         <div *ngIf="showUserTable">
             <table class="user-table">
                 <thead>
@@ -26,13 +26,14 @@
                     <td>{{item.username}}</td>
                     <td>{{item.email}}</td>
                     
-                    <td><button type="button" class="btn2">Edit</button></td>
-                    <td><button type="button" class="btn3">Delete</button></td>
+                   
+                    <td><button type="button" class="btn btn-outline-warning">Edit</button></td>
+                    <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
                   </tr>
                 </tbody>
               </table>
         </div>
-        <div *ngIf="!showUserTable">
+        <div *ngIf="!showUserTable" >
             <table class="event-table">
                 <thead>
                   <tr>
@@ -54,8 +55,8 @@
                       <td>{{event.dateTime | date}}</td>
                       <td>{{event.location}}</td>
                       <td>{{event.status}}</td>
-                      <td><button class="btn2">Edit</button></td>
-                      <td><button class="btn3" >Delete</button></td>
+                      <td><button type="button" class="btn btn-outline-warning">Edit</button></td>
+                    <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
                   </tr>
                 </tbody>
               </table>

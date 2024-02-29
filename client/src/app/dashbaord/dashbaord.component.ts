@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 import { HttpService } from '../../services/http.service';
 
 @Component({
@@ -11,8 +12,9 @@ export class DashbaordComponent {
   showUserTable:boolean=true;
   userList$: Observable<any>;
   eventList$: Observable<any>;
-  constructor(private httpService:HttpService){
-    
+  roleName:string='';
+  constructor(private httpService:HttpService,private authService:AuthService){
+    this.roleName=authService.getRole;
   }
   ngOnInit(): void {
 

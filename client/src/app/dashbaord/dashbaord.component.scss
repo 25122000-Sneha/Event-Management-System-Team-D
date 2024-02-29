@@ -21,7 +21,7 @@
     border-collapse: collapse;
   }
   
-  .event-table th, .event-table td {
+  .event-table th {
     border: 1px solid #ccc;
     padding: 8px;
     text-align: left;
@@ -77,17 +77,5 @@
     margin-top: 10px;
   }
   
-  .btn {
-    background-color:grey;
-    border: none;
-    border-radius: 0px;
-    margin-right: 1px;
-    color: white;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  .btn.active{
-    background-color:  #1b0ca2;
 
-  }
   
