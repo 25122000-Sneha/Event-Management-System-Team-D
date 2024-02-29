@@ -57,7 +57,7 @@ export class ResourceAllocateComponent {
   onSubmit() {
     //complete this function
     if(this.itemForm.valid){
-      this.httpService.allocateResources(this.itemForm.get('event'),this.itemForm.get('resource'),this.itemForm.value).subscribe(
+      this.httpService.allocateResources(this.itemForm.value.event.eventID,this.itemForm.value.resource.resourceID,this.itemForm.value).subscribe(
         (data: any)=>{
           this.showMessage = true;
           this.responseMessage = 'Allocation successfully done';

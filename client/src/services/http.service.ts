@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, Observable, retry } from 'rxjs';
 import { environment } from '../environments/environment.development';
 import { AuthService } from './auth.service';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -53,7 +52,15 @@ export class HttpService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     headers = headers.set('Authorization', `Bearer ${authToken}`)
-    return this.http.get(this.serverName+`/api/staff/event-details/`+eventId,{headers:headers});
+    return this.http.get(this.serverName+`/api/staff/event-details/`+eventId,{headers:headers}).pipe(
+      map((data: any)=>{
+        if(Array.isArray(data)){
+          return data;
+        }else{
+          return [data];
+        }
+      })
+    );
   }
   GetAllResources():Observable<any> {
    

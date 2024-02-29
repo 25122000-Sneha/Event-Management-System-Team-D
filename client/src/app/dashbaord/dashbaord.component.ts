@@ -21,10 +21,10 @@ export class DashbaordComponent {
     this.getEvents();
   }
   getEvents() {
-    // this.eventList$=this.httpService.getEvents();
+    this.eventList$=this.httpService.GetAllevents();
   }
   getUsers() {
      //complete this function
-    //  this.userList$  = this.httpService.getAllUser();
+     this.userList$  = this.httpService.getAllUser();
   }
 }
