@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators }
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
+import { Observable, of } from 'rxjs';
 
 
 
@@ -16,7 +17,12 @@ export class LoginComponent implements OnInit {
   formModel: any = {};
   showError: boolean = false;
   errorMessage: any;
+  userSuccess$ : Observable<String> = of('');
+  userError$ : Observable<String> = of('');
   constructor(public router: Router, public httpService: HttpService, private formBuilder: FormBuilder, private authService: AuthService) {
+    if(authService.getLoginStatus){
+      router.navigateByUrl('dashboard');
+    }
     this.itemForm = this.formBuilder.group({
       username: ["", [Validators.required, this.noSpaceValidations]],
       password: ["", [Validators.required, this.passwordIsNotValid]]
@@ -52,16 +58,15 @@ export class LoginComponent implements OnInit {
       this.httpService.Login(this.itemForm.value).subscribe((data: any) => {
         if (data.userNo != 0) {
           debugger;
-
           // localStorage.setItem('role', data.role);
           this.authService.SetRole(data.role);
-          this.authService.saveToken(data.token)
+          this.authService.saveToken(data.token);
+
+          this.userSuccess$ = of("User created successfully");
           this.router.navigateByUrl('/dashboard');
-
-
           setTimeout(() => {
             window.location.reload();
-          }, 1000);
+          }, 500);
         } else {
           this.showError = true;
           this.errorMessage = "Wrong User or Password";
@@ -71,6 +76,8 @@ export class LoginComponent implements OnInit {
         this.showError = true;
         this.errorMessage = "An error occurred while logging in. Please try again later.";
         console.error('Login error:', error);
+
+        this.userError$ = of("Unable to login user");
       });;
     } else {
       this.itemForm.markAllAsTouched();

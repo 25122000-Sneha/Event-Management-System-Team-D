@@ -32,6 +32,10 @@
             <div class="text text-danger mt-2" *ngIf="itemForm.get('username')?.hasError('NoSpaceValidator')">
               Invalid user name format
             </div>
+            <div class="text text-danger mt-2" *ngIf="itemForm.get('username')?.hasError('UserExist') &&
+           itemForm.get('username')?.touched ">
+              Username is required
+            </div>
           </div>
           <div class="mb-3">
             <label for="email" class="fw-bold form-label">Email address</label>
@@ -55,7 +59,7 @@
             <label for="password" class="fw-bold form-label ">Password</label>
             <!-- //create input with  formControlName="password" -->
  
-            <input type="text" name="password" formControlName="password" class="form-control">
+            <input type="password" name="password" formControlName="password" class="form-control">
  
             <div class="text text-danger mt-2" *ngIf="itemForm.get('password')?.hasError('required') &&
            itemForm.get('password')?.touched ">

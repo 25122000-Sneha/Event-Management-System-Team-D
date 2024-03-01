@@ -52,15 +52,7 @@ export class HttpService {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     headers = headers.set('Authorization', `Bearer ${authToken}`)
-    return this.http.get(this.serverName+`/api/staff/event-details/`+eventId,{headers:headers}).pipe(
-      map((data: any)=>{
-        if(Array.isArray(data)){
-          return data;
-        }else{
-          return [data];
-        }
-      })
-    );
+    return this.http.get(this.serverName+`/api/staff/event-details/`+eventId,{headers:headers});
   }
   GetAllResources():Observable<any> {
    
@@ -136,5 +128,13 @@ export class HttpService {
   }
   getAllUser():Observable<any>{
     return this.http.get(this.serverName+'/api/users');
+  }
+
+  getAllAllocationByEventId(eventId:any): Observable<any> {
+    const authToken = this.authService.getToken();
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Authorization', `Bearer ${authToken}`);
+    return this.http.get(`${this.serverName}/api/client/allocation/${eventId}`,{headers:headers});
   }
 }

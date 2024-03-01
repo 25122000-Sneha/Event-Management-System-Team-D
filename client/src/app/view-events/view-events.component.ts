@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { FormsModule } from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 // import { HttpService } from '../../services/http.service';
 // import { AuthService } from '../../services/auth.service';
 
@@ -31,8 +32,12 @@ export class ViewEventsComponent implements OnInit {
   errorMsg$: Observable<String> = of('');
   responseMsg$: Observable<String> = of('');
   event:any;
-  constructor(public router: Router, private formBuilder: FormBuilder, private httpService: HttpService) {
+  isCompleted:boolean;
+  constructor(public router: Router, private formBuilder: FormBuilder, private httpService: HttpService,private authService:AuthService) {
     // this.itemForm =complete this form init
+    if(authService.getRole != 'STAFF'){      
+      router.navigateByUrl('dashboard')
+    }
     this.itemForm = formBuilder.group({
       eventID: [''],
       title: ['', [Validators.required]],
@@ -49,7 +54,15 @@ export class ViewEventsComponent implements OnInit {
   }
   searchEvent() {
     //complete this function
-    this.eventObj$ = this.httpService.GetEventdetails(this.inputMessage);
+    this.eventObj$ = this.httpService.GetEventdetails(this.inputMessage).pipe(
+      map((data: any)=>{
+        if(Array.isArray(data)){
+          return data;
+        }else{
+          return [data];
+        }
+      })
+    );
   }
 
 
@@ -57,6 +70,7 @@ export class ViewEventsComponent implements OnInit {
     //complete this function
     if (this.itemForm.valid) {
       console.log(this.inputMessage);
+
       this.httpService.updateEvent(this.itemForm.value, this.inputMessage).subscribe(
         (res: any) => {
           this.responseMsg$ = of('Event updated successfully');
@@ -67,6 +81,10 @@ export class ViewEventsComponent implements OnInit {
         }
       )
       this.isUpdate = true;
+      if(this.itemForm.value.status === 'Complete')
+      {
+        this.isCompleted = true;
+      }
     }else{
       this.itemForm.markAllAsTouched();
     }
@@ -77,11 +95,18 @@ export class ViewEventsComponent implements OnInit {
     // this.itemForm.patchValue({
     // //complete this function
     // })
-
     this.eventObj$.subscribe((data: any) => {
       this.event = data[0];
       this.itemForm.patchValue(data[0]);
       console.log(data);
     });
+    // this.itemForm.patchValue({
+    //   title:val.title,
+    //   description:val.description,
+    //   dateTime:dateTime.toISOString().substring(0,10),
+    //   location:val.location,
+    //   status:val.status
+
+    // })
   }
 }

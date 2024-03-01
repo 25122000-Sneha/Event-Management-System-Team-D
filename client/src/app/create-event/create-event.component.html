@@ -1,105 +1,3 @@
-<!-- <div class="d-flex justify-content-between mt-4">
-    <h2 class="mb-0">Manage Event</h2>  
-  
-  </div>
-  <div class="row mt-3">
-    <div class="card">
-        <div class="card-header">
-        Create Event
-          </div>
-        <div class="card-body">
-            <form class="mb-3 mt-md-4" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="content" class="form-label ">Title</label>
-                          <-- create input with formControlName="title" and validation ->
-                      
-                          </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="description" class="form-label ">Description</label>
-                            <-- create input with formControlName="description" and validation ->
-                        
-                          </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="dateTime" class="form-label ">Date Time</label>
-                          <-- create input with formControlName="dateTime" and validation ->
-                   
-                          </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="location" class="form-label ">location</label>
-                           <-- create input with formControlName="location" and validation ->
-                    
-                          </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Status</label>
-                           <-- create select with formControlName="status" and validation ->
-                       
-                          <-- <option value="null">Choose Status</option>
-                          <option value="Initiated">Initiated</option>
-                          <option value="Complete">Complete</option> ->
-                    
-                     
-                    </div>
-                    <div class="col-md-2">
-                        <div class="d-grid">
-                            <br>
-                            <button class="btn btn-outline-dark mt-1" type="submit">Submit</button>
-                          </div>
-                    </div>
-                </div>
-              
-               
-              
-               
-              </form>
-        </div>
-    </div>
-  </div>
-  <div class="row mt-3">
-    <div class="card">
-        <div class="card-header">Hospital Information</div>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Sr#</th>
-                        <th>Title</th>
-                        <th>Description</th> 
-                        <th>Date Time</th>                           
-                        <th>Location</th>      
-                        <th>status</th>               
-                  
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let event of eventList">
-                      <td>{{event.eventID}}</td>
-                        <td>{{event.title}}</td>
-                        <td>{{event.description}}</td>
-                        <td>{{event.dateTime | date:'dd-MMM-yyyy'}}</td>
-                        <td>{{event.location}}</td>                    
-                        <td>{{event.status}}</td>
-                  
-                       
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    
-  </div>
- -->
-
 <div class="banner">
     <h2>Event Management</h2>
 </div>
@@ -110,14 +8,12 @@
                 <h3>Create an event</h3>
                 <div class="mb-3">
                     <label for="name" class="form-label ">Title :</label>
-                    <!-- create input with formControlName="name"  and with validation  -->
                     <input type="text" id="title" formControlName="title" class="form-control">
                     <div *ngIf="itemForm.get('title')?.hasError('required') && itemForm.get('title')?.touched"
                         class="text-danger">Title is requried</div>
                 </div>
                 <div class="mb-3">
                     <label for="type" class="form-label ">Description :</label>
-                    <!-- create input with formControlName="type"  and with validation  -->
                     <input type="text" id="description" formControlName="description" class="form-control">
                     <div
                         *ngIf="itemForm.get('description')?.hasError('required') && itemForm.get('description')?.touched">
@@ -126,7 +22,6 @@
                 </div>
                 <div class="mb-3">
                     <label for="dateTime" class="form-label ">Date:</label>
-                    <!-- create input with formControlName="type"  and with validation  -->
                     <input type="datetime-local" id="dateTime" formControlName="dateTime" class="form-control">
                     <div *ngIf="itemForm.get('dateTime')?.hasError('required') && itemForm.get('dateTime')?.touched">
                         Date Time is Required
@@ -135,7 +30,6 @@
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label ">Location:</label>
-                    <!-- create input with formControlName="type"  and with validation  -->
                     <input type="text" id="location" formControlName="location" class="form-control">
                     <div *ngIf="itemForm.get('location')?.hasError('required') && itemForm.get('location')?.touched">
                         Location is Required
@@ -144,27 +38,19 @@
                 </div>
                 <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
-                    <!-- create select with formControlName="status" and validation -->
                     <select formControlName="status" class="form-control">
                         <option value="">Choose Status</option>
                         <option value="Initiated">Initiated</option>
                         <option value="Complete">Complete</option>
                     </select>
-                    <!-- <option value="null">Choose Status</option>
-                  <option value="Initiated">Initiated</option>
-                  <option value="Complete">Complete</option> -->
                 </div>
                 <div class="mb-3">
                     <label for="user" class="form-label">Select User</label>
-                    <!-- create select with formControlName="status" and validation -->
                     <select formControlName="user" class="form-control">
                         <option value="">Choose user</option>
                         <option [ngValue]="user" *ngFor="let user of userList$ | async">{{user.userID}} {{user.username}}</option>
                         
                     </select>
-                    <!-- <option value="null">Choose Status</option>
-                  <option value="Initiated">Initiated</option>
-                  <option value="Complete">Complete</option> -->
                 </div>
                 <div class="mb-5">
                     <br>
@@ -182,96 +68,3 @@
         </form>
     </div>
 </div>
-<!-- </div>
-    </div>
-   
-   
-  </div> -->
-
-<!-- <div class="card ">
-    <div class="card-header">Event Information</div>
-    <div class="row mt-3">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Sr#</th>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Date Time</th>
-                            <th>Location</th>
-                            <th>status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let event of eventList">
-                            <td>{{event.eventID}}</td>
-                            <td>{{event.title}}</td>
-                            <td>{{event.description}}</td>
-                            <td>{{event.dateTime | date:'dd-MMM-yyyy'}}</td>
-                            <td>{{event.location}}</td>
-                            <td>{{event.status}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
-
-
-
-
-
-
-
-<!--
- 
-<div class="vh-100 d-flex justify-content-center align-items-center">
-    <div class="container mt-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-12 col-md-8 col-lg-6 ">
-                   <div class="card bg-white mt-5">
-                    <div class="card-body p-5 shadow-lg p-3 mb-5 mt-5 bg-white rounded">
- 
-                        <div class="card-header">Event Information</div>
-                        <div class="row mt-3">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Sr#</th>
-                                                <th>Title</th>
-                                                <th>Description</th>
-                                                <th>Date Time</th>
-                                                <th>Location</th>
-                                                <th>status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let event of eventList">
-                                                <td>{{event.eventID}}</td>
-                                                <td>{{event.title}}</td>
-                                                <td>{{event.description}}</td>
-                                                <td>{{event.dateTime | date:'dd-MMM-yyyy'}}</td>
-                                                <td>{{event.location}}</td>
-                                                <td>{{event.status}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
- 
- 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->

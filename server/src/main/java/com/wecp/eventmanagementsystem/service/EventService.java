@@ -1,7 +1,9 @@
 package com.wecp.eventmanagementsystem.service;
 
 
+import com.wecp.eventmanagementsystem.entity.Allocation;
 import com.wecp.eventmanagementsystem.entity.Event;
+import com.wecp.eventmanagementsystem.repository.AllocationRepository;
 import com.wecp.eventmanagementsystem.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class EventService {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private AllocationRepository allocationRepository;
+
 
     public Event createEvent(Event event) {
        // save event in databse
@@ -23,7 +28,7 @@ public class EventService {
 
     public List<Event> getAllEvents() {
         // get all events
-        return eventRepository.findAll();
+        return (List<Event>) eventRepository.findAll();
     }
 
     public Event getEventDetails(Long eventId) {
@@ -34,5 +39,9 @@ public class EventService {
     public Event updateEventSetup(Long eventId, Event updatedEvent) {
        // update event
        return eventRepository.save(updatedEvent);
+    }
+
+    public List<Allocation> getAllocationsByEventId(Long eventId){
+        return allocationRepository.findByEvent(eventId);
     }
 }

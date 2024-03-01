@@ -82,7 +82,7 @@
           <div class="mb-3">
             <label for="password" class="fw-bold form-label ">Password</label>
               <!-- //create input with formControlName password -->
-            <input type="text" id="password" formControlName="password" class="form-control">
+            <input type="password" id="password" formControlName="password" class="form-control">
             <span *ngIf="this.itemForm.get('password')?.hasError('required') && this.itemForm.get('password')?.touched" class="text-danger">
               Password is required
             </span>
@@ -95,6 +95,14 @@
             <p class="mb-0  text-center">Don't have an account? <a (click)="registration()"
                 class="text-primary fw-bold">Registration</a></p>
           </div>
+          <ng-container >
+            <div *ngIf="userSuccess$ | async as success" class="alert alert-success">
+                {{success}}
+            </div>
+            <div *ngIf="userError$ | async as error" class="alert alert-danger">
+                {{error}}
+            </div>
+        </ng-container>
         </form>
       </div>
       <div class="right-half">

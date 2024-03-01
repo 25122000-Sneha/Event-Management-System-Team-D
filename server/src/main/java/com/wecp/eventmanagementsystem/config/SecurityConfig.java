@@ -26,7 +26,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity
+//@EnableMethodSecurity
 public class SecurityConfig 
 {
 //extends WebSecurityConfigurerAdapter {
@@ -56,10 +56,11 @@ public class SecurityConfig
             .antMatchers(HttpMethod.POST,"/api/planner/resource").hasAuthority("PLANNER")
             .antMatchers(HttpMethod.GET,"/api/planner/resources").hasAuthority("PLANNER")
             .antMatchers(HttpMethod.POST,"/api/planner/allocate-resources").hasAuthority("PLANNER")
-            .antMatchers(HttpMethod.GET,"/api/staff/event-details/**").hasAuthority("STAFF")
-            .antMatchers(HttpMethod.PUT,"/api/staff/update-setup/**").hasAuthority("STAFF")
-            .antMatchers(HttpMethod.GET,"/api/client/booking-details/**").hasAuthority("CLIENT")
-            .antMatchers("/api/**").authenticated()
+            .antMatchers(HttpMethod.GET,"/api/staff/event-details/{eventId}").hasAuthority("STAFF")
+            .antMatchers(HttpMethod.PUT,"/api/staff/update-setup/{eventId}").hasAuthority("STAFF")
+            .antMatchers(HttpMethod.GET,"/api/client/booking-details/{eventId}").hasAuthority("CLIENT")
+            .antMatchers(HttpMethod.GET,"/api/client/allocation/{eventId}").hasAuthority("CLIENT")
+            .anyRequest().authenticated()
             .and()
             .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
