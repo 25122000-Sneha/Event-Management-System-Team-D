@@ -59,7 +59,7 @@ export class CreateEventComponent implements OnInit {
     const input=new Date(control.value);
     
 
-    if ( today<input) {
+    if ( input<today) {
       return { invalidDate: true };
     } else {
       return null;

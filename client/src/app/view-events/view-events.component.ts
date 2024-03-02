@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { FormsModule } from '@angular/forms';
@@ -43,7 +43,7 @@ export class ViewEventsComponent implements OnInit {
       eventID: [''],
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      dateTime: ['', [Validators.required]],
+      dateTime: ['', [Validators.required,this.dateValidations]],
       location: ['', [Validators.required]],
       status: ['', [Validators.required]],
       user: ['', [Validators.required]]
@@ -52,6 +52,18 @@ export class ViewEventsComponent implements OnInit {
   ngOnInit(): void {
 
 
+  }
+  dateValidations(control: AbstractControl): ValidationErrors | null {
+
+    const today=new Date();
+    const input=new Date(control.value);
+    
+
+    if ( input<today) {
+      return { invalidDate: true };
+    } else {
+      return null;
+    }
   }
   searchEvent() {
     //complete this function

@@ -1,6 +1,3 @@
-<!-- <div class="row text-center">
-<h1 class="text-capitalize">Event Management System</h1>
-</div> -->
 <div class="card">
   <div class="card-header">
     <h2>Dashboard</h2>
@@ -53,6 +50,7 @@
         </tbody>
       </table>
     </div>
+    <h5  *ngIf=" roleName === 'STAFF'">All Events</h5>
     <table class="event-table" *ngIf=" roleName === 'STAFF'">
       <thead>
         <tr>
@@ -89,36 +87,6 @@
           <p>Total Events: 10</p>
         </div>
       </div>
-
-      
-      <!-- <div class="image-container">
-        
-        <div class="event">
-          <h3>Birthday</h3>
-          <img src="assets/birthday_event.jpg"   
-         alt="">
-        </div>
-
-        <div class="event">
-          <h3>Wedding</h3>
-          <img src="assets/wedding_event.jpg"    
-           alt="">
-        </div>
-
-        <div class="event">
-          <h3>Family Reunion</h3>
-          <img src="assets/Family-Reunion-event.jpg"    
-           alt="">
-        </div>
-
-        <div class="event">
-          <h3>Corporate Event</h3>
-          <img src="assets/Event-Planning-Business-in-plan.jpg"    
-           alt="">
-        </div>
-        
-      </div> -- > -->
-      
     </div>
   </div>
 </div>
