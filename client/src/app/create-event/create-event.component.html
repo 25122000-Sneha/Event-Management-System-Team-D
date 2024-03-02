@@ -17,7 +17,7 @@
                     <label for="type" class="form-label ">Description :</label>
                     <!-- create input with formControlName="type"  and with validation  -->
                     <input type="text" id="description" formControlName="description" class="form-control" placeholder="enter description">
-                    <div
+                    <div  class="text-danger"
                         *ngIf="itemForm.get('description')?.hasError('required') && itemForm.get('description')?.touched">
                         Description is Required
                     </div>
@@ -26,8 +26,12 @@
                     <label for="dateTime" class="form-label ">Date:</label>
                     <!-- create input with formControlName="type"  and with validation  -->
                     <input type="datetime-local" id="dateTime" formControlName="dateTime" class="form-control" placeholder="select date">
-                    <div *ngIf="itemForm.get('dateTime')?.hasError('required') && itemForm.get('dateTime')?.touched">
+                    <div  class="text-danger" *ngIf="itemForm.get('dateTime')?.hasError('required') && itemForm.get('dateTime')?.touched">
                         Date Time is Required
+                    </div>
+
+                    <div  class="text-danger" *ngIf="itemForm.get('dateTime')?.hasError('invalidDate') && itemForm.get('dateTime')?.touched">
+                        Date should be future
                     </div>
 
                 </div>
@@ -35,7 +39,7 @@
                     <label for="location" class="form-label ">Location:</label>
                     <!-- create input with formControlName="type"  and with validation  -->
                     <input type="text" id="location" formControlName="location" class="form-control" placeholder="enter location">
-                    <div *ngIf="itemForm.get('location')?.hasError('required') && itemForm.get('location')?.touched">
+                    <div  class="text-danger" *ngIf="itemForm.get('location')?.hasError('required') && itemForm.get('location')?.touched">
                         Location is Required
                     </div>
 
@@ -48,6 +52,10 @@
                         <option value="Complete" disabled
                         >Complete</option>
                     </select>
+
+                    <div  class="text-danger" *ngIf="itemForm.get('status')?.hasError('required') && itemForm.get('status')?.touched">
+                        Status is Required
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="user" class="form-label">Select User</label>
@@ -56,6 +64,11 @@
                         <option [ngValue]="user" *ngFor="let user of userList$ | async" >{{user.userID}} {{user.username}}</option>
                         
                     </select>
+
+                    <div  class="text-danger" *ngIf="itemForm.get('user')?.hasError('required') && itemForm.get('user')?.touched">
+                        User is Required
+                    </div>
+
                 </div>
                 <div class="mb-5">
                     <br>

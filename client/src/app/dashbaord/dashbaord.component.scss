@@ -12,8 +12,9 @@
 
 .user-table th {
   background-color: #007bff;
-  color: #000000;
+  // color: #000000;
   font-weight: bold;
+  color:#fff
 }
 
 .event-table {
@@ -37,8 +38,9 @@
 
 .event-table th {
   background-color: #007bff;
-  color: #000000;
+  // color: #000000;
   font-weight: bold;
+  color:#fff
 }
 
 a.task-list {
@@ -63,7 +65,9 @@ a.task-list:hover {
 
 .card-body {
   margin-top: 10px;
+  
 }
+
 
 .btn.active {
   background-color: #007bff;
@@ -109,4 +113,29 @@ h1 {
 .orders-count p {
   font-size: 20px;
   color: #007bff;
+}
+
+.image-container{
+  display:flex;
+  margin: 20px auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding:0 20px;
+  
+  
+}
+h3{
+  color: #333;
+}
+.event{
+  margin:20px;
+  text-align: center;
+ 
+}
+.event img{
+  margin-bottom: 10px;
+  height: auto;
+  width: 500px;
+  border: 2px solid black;
+  border-radius: 5px;
 }
