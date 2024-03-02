@@ -51,6 +51,18 @@ export class ViewEventsComponent implements OnInit {
 
 
   }
+  // dateValidations(control: AbstractControl): ValidationErrors | null {
+
+  //   const today=new Date();
+  //   const input=new Date(control.value);
+    
+
+  //   if ( input<today) {
+  //     return { invalidDate: true };
+  //   } else {
+  //     return null;
+  //   }
+  // }
   searchEvent() {
     this.eventObj$ = this.httpService.GetEventdetails(this.inputMessage).pipe(
       map((data: any) => {

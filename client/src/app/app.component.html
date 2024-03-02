@@ -9,7 +9,8 @@
 
   </div>
 
-  <div class="navbar-options">
+  <div class="navbar-options" style="color: white;">
+   
     <a *ngIf="IsLoggin" [routerLink]="['/dashboard']">Home</a>
     <a *ngIf="roleName === 'PLANNER'" [routerLink]="['/create-event']">Create Event</a>
     <a *ngIf="roleName === 'PLANNER'" [routerLink]="['/add-resource']">Add Resource</a>

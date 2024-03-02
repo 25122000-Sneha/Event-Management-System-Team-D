@@ -53,7 +53,6 @@ export class CreateEventComponent implements OnInit {
       })
      );
   }
-
   dateValidations(control: AbstractControl): ValidationErrors | null {
 
     const today=new Date();
@@ -66,6 +65,19 @@ export class CreateEventComponent implements OnInit {
       return null;
     }
   }
+
+  // dateValidations(control: AbstractControl): ValidationErrors | null {
+
+  //   const today=new Date();
+  //   const input=new Date(control.value);
+    
+
+  //   if ( input<today) {
+  //     return { invalidDate: true };
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
 
   onSubmit() {

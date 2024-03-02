@@ -1,19 +1,16 @@
-<!-- <div class="row text-center">
-<h1 class="text-capitalize">Event Management System</h1>
-</div> -->
 <div class="card">
   <div class="card-header">
     <h2>Dashboard</h2>
   </div>
   <div class="card-body">
-    <button class="btn" [class.active]="showUserTable" (click)="showUserTable=true"
+    <button   class="btn" [class.active]="showUserTable" (click)="showUserTable=true"
       *ngIf=" roleName === 'PLANNER'">Users</button>
     <button class="btn" [class.active]="!showUserTable" (click)="showUserTable=false"
       *ngIf=" roleName === 'PLANNER'">Events</button>
     <div *ngIf="showUserTable">
       <table class="user-table" *ngIf=" roleName === 'PLANNER'">
         <thead class="header">
-          <tr>
+          <tr class="heading">
             <th>User id</th>
             <th>user Name</th>
             <th>Email</th>
@@ -53,6 +50,7 @@
         </tbody>
       </table>
     </div>
+    <h5  *ngIf=" roleName === 'STAFF'">All Events</h5>
     <table class="event-table" *ngIf=" roleName === 'STAFF'">
       <thead>
         <tr>

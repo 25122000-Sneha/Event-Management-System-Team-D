@@ -70,14 +70,14 @@
                 <div class="mb-3">
                     <label for="name" class="form-label ">Title :</label>
                     <input type="text" id="title" formControlName="title" class="form-control">
-                    <div *ngIf="itemForm.get('title')?.hasError('required') && itemForm.get('title')?.touched"
+                    <div  class="text-danger" *ngIf="itemForm.get('title')?.hasError('required') && itemForm.get('title')?.touched"
                         class="text-danger">Title is requried</div>
                 </div>
                 <div class="mb-3">
                     <label for="type" class="form-label ">Description :</label>
                     <!-- create input with formControlName="type"  and with validation  -->
                     <input type="text" id="description" formControlName="description" class="form-control">
-                    <div
+                    <div  class="text-danger"
                         *ngIf="itemForm.get('description')?.hasError('required') && itemForm.get('description')?.touched">
                         Description is Required
                     </div>
@@ -86,8 +86,11 @@
                     <label for="dateTime" class="form-label ">Date:</label>
                     <!-- create input with formControlName="type"  and with validation  -->
                     <input type="datetime-local" id="dateTime" formControlName="dateTime" class="form-control">
-                    <div *ngIf="itemForm.get('dateTime')?.hasError('required') && itemForm.get('dateTime')?.touched">
+                    <div  class="text-danger" *ngIf="itemForm.get('dateTime')?.hasError('required') && itemForm.get('dateTime')?.touched">
                         Date Time is Required
+                    </div>
+                    <div  class="text-danger" *ngIf="itemForm.get('dateTime')?.hasError('invalidDate') && itemForm.get('dateTime')?.touched">
+                        Date should be future
                     </div>
 
                 </div>
@@ -95,7 +98,7 @@
                     <label for="location" class="form-label ">Location:</label>
                     <!-- create input with formControlName="type"  and with validation  -->
                     <input type="text" id="location" formControlName="location" class="form-control">
-                    <div *ngIf="itemForm.get('location')?.hasError('required') && itemForm.get('location')?.touched">
+                    <div  class="text-danger" *ngIf="itemForm.get('location')?.hasError('required') && itemForm.get('location')?.touched">
                         Location is Required
                     </div>
 
@@ -108,6 +111,10 @@
                         <option value="Initiated">Initiated</option>
                         <option value="Complete">Complete</option>
                     </select>
+
+                    <div  class="text-danger" *ngIf="itemForm.get('status')?.hasError('required') && itemForm.get('status')?.touched">
+                        Status is Required
+                    </div>
                     <!-- <option value="null">Choose Status</option>
                   <option value="Initiated">Initiated</option>
                   <option value="Complete">Complete</option> -->
