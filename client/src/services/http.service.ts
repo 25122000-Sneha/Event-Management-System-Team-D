@@ -130,18 +130,19 @@ export class HttpService {
     return this.http.get(this.serverName + '/api/users');
   }
 
-  getAllAllocationByEventId(eventId: any): Observable<any> {
-    const authToken = this.authService.getToken();
-    let headers = new HttpHeaders();
-    headers = headers.set('Content-Type', 'application/json');
-    headers = headers.set('Authorization', `Bearer ${authToken}`);
-    return this.http.get(`${this.serverName}/api/client/allocation/${eventId}`, { headers: headers });
-  }
   getAllEventsStaff(): Observable<any> {
     const authToken = this.authService.getToken();
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/json');
     headers = headers.set('Authorization', `Bearer ${authToken}`);
     return this.http.get(this.serverName + '/api/staff/all-event-details', { headers: headers });
+  }
+
+  getAllAllocationByEventId(eventId:any): Observable<any> {
+    const authToken = this.authService.getToken();
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/json');
+    headers = headers.set('Authorization', `Bearer ${authToken}`);
+    return this.http.get(`${this.serverName}/api/client/allocation/${eventId}`,{headers:headers});
   }
 }

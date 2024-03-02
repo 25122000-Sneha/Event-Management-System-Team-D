@@ -35,12 +35,13 @@ public class UserService implements UserDetailsService {
       return userRepository.findByUsername(username).get();
     }
     public List<User> getAllUser(){
-      return userRepository.findAll();
+      return (List<User>) userRepository.findAll();
     }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // load UserDetails by username
         Optional<User> user = userRepository.findByUsername(username);
+        // return new UserInfoUserDetails(userRepository.findByUsername(username));
         return user.map(UserInfoUserDetails::new)
                     .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
       //   if (user == null) {

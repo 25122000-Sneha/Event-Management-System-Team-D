@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map, Observable, of } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 import { HttpService } from '../../services/http.service';
 
 @Component({
@@ -25,7 +26,10 @@ export class ResourceAllocateComponent {
 
 
 
-  constructor(public router: Router, private formBuilder: FormBuilder, private httpService: HttpService) {
+  constructor(public router: Router, private formBuilder: FormBuilder, private httpService: HttpService,private authService:AuthService) {
+    if(authService.getRole != 'PLANNER'){      
+      router.navigateByUrl('dashboard')
+    }
     this.itemForm = this.formBuilder.group({
       resource: ['', [Validators.required, this.notNegitive]],
       quantity: ['', [Validators.required, this.notNegitive]],

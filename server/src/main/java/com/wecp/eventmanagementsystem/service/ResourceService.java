@@ -29,7 +29,7 @@ public class ResourceService {
 
     public List<Resource> getAllResources() {
         // get all resources
-        return resourceRepository.findAll();
+        return (List<Resource>) resourceRepository.findAll();
     }
 
     public void allocateResources(Long eventId, Long resourceId, Allocation allocation) {
