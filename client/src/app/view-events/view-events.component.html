@@ -26,64 +26,7 @@
         </div>
     </div>
 </div>
-<!-- <form *ngIf="isUpdate" class="mb-3 mt-md-4" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="content" class="form-label ">Title</label>
-                            <!-- create input with formControlName="title" with validation message ->
- 
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="description" class="form-label ">Description</label>
-                            <!-- create input with formControlName="description" with validation message ->
- 
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="dateTime" class="form-label ">Date Time</label>
-                            <!-- create input with formControlName="dateTime" with validation message ->
- 
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="mb-3">
-                            <label for="location" class="form-label ">location</label>
-                            <!-- create input with formControlName="location" with validation message ->
- 
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Status</label>
-                        <!-- create input with formControlName="status" with validation message ->
- 
-                        <!-- <option value="null">Choose Status</option>
-                          <option value="Initiated">Initiated</option>
-                          <option value="Complete">Complete</option>
-            ->
-                    </div>
-                   
-                    <div class="col-md-2">
-                        <div class="d-grid">
-                            <br>
-                            <button class="btn btn-outline-dark mt-1" type="submit">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div *ngIf="showMessage" class="alert alert-success mt-4" role="alert">
-                {{ responseMessage }}
-            </div>
-            <div *ngIf="showError" class="alert alert-danger" role="alert">
-                {{errorMessage}}
-            </div> -->
 <div class="row mt-3" *ngIf="isUpdate">
-    <!-- <div class="card">
-        <div class="card-header">Hospital Information</div>
-    </div> -->
     <div class="card-body">
         <div class="table-responsive">
             <table class="table">
@@ -106,7 +49,6 @@
                         <td>{{item.dateTime | date:'dd-MMM-yyyy'}}</td>
                         <td>{{item.location}}</td>
                         <td>{{item.status}}</td>
-
                         <td>
                             <button (click)="edit(item)" *ngIf="item.eventID" class="btn btn-outline-warning" [disabled] = "item.status==='Complete'">Update</button>
                         </td>
@@ -117,15 +59,7 @@
     </div>
 </div>
 
-
-
-
-
-
-<!-- New update form -->
-
 <div class="conatainer2" [hidden]="isUpdate">
-
     <div class="banner">
         <h2>Update Event</h2>
     </div>
@@ -135,7 +69,6 @@
 
                 <div class="mb-3">
                     <label for="name" class="form-label ">Title :</label>
-                    <!-- create input with formControlName="name"  and with validation  -->
                     <input type="text" id="title" formControlName="title" class="form-control">
                     <div *ngIf="itemForm.get('title')?.hasError('required') && itemForm.get('title')?.touched"
                         class="text-danger">Title is requried</div>
@@ -171,7 +104,7 @@
                     <label for="status" class="form-label">Status</label>
                     <!-- create select with formControlName="status" and validation -->
                     <select formControlName="status" class="form-control">
-                        <option value="">Choose Status</option>
+                        <option value="" hidden>Choose Status</option>
                         <option value="Initiated">Initiated</option>
                         <option value="Complete">Complete</option>
                     </select>
@@ -183,7 +116,7 @@
                     <label for="user" class="form-label">Select User</label>
                     <!-- create select with formControlName="status" and validation -->
                     <select formControlName="user" class="form-control">
-                        <option value="">Choose user</option>
+                        <option value="" hidden>Choose user</option>
                         <option [ngValue]="event?.user" selected>{{event?.user?.userID}} {{event?.user?.username}}</option>
                     </select>
                     <!-- <option value="null">Choose Status</option>

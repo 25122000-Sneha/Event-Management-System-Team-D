@@ -23,6 +23,18 @@ export class AuthService {
   get getRole(): string | null {
     return localStorage.getItem('role');
   }
+  SetUsername(username:string){
+    localStorage.setItem('username',username);
+  }
+  get getUsername() {
+    return localStorage.getItem('username');
+  }
+  SetEmail(email:string){
+    localStorage.setItem('email',email);
+  }
+  get getEmail(){
+    return localStorage.getItem('email');
+  }
   // Method to retrieve login status
   get getLoginStatus(): boolean {
 

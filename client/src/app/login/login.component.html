@@ -6,7 +6,7 @@
   <title>Login Page</title>
 </head>
 <body>
-  <div class="container">
+  <div class="container" >
     <header>
       <img src="assets/logo.png" alt="Logo" class="logo">
       <h1 class="app-name">Event Ease</h1>
@@ -39,6 +39,10 @@
           </div>
           <button type="submit">Login</button>
           <div>
+            <p class="mb-0  text-center"><a (click) = "forgotPassword()"
+                class="text-primary fw-bold">Forgot password?</a></p>
+          </div>
+          <div>
             <p class="mb-0  text-center">Don't have an account? <a (click)="registration()"
                 class="text-primary fw-bold">Registration</a></p>
           </div>
@@ -57,5 +61,8 @@
       </div>
     </div>
   </div>
+
+  <!--Forgot Password Page-->
+  
 </body>
 </html>

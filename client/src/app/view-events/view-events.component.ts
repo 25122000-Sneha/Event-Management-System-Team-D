@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { FormsModule } from '@angular/forms';
 import { map, Observable, of } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
-// import { HttpService } from '../../services/http.service';
-// import { AuthService } from '../../services/auth.service';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -31,19 +30,18 @@ export class ViewEventsComponent implements OnInit {
   userList$: Observable<any> = of([]);
   errorMsg$: Observable<String> = of('');
   responseMsg$: Observable<String> = of('');
-  notClicked:boolean=true;
-  event:any;
-  isCompleted:boolean;
-  constructor(public router: Router, private formBuilder: FormBuilder, private httpService: HttpService,private authService:AuthService) {
-    // this.itemForm =complete this form init
-    if(authService.getRole != 'STAFF'){      
+  notClicked: boolean = true;
+  event: any;
+  isCompleted: boolean;
+  constructor(public router: Router, private formBuilder: FormBuilder, private httpService: HttpService, private authService: AuthService) {
+    if (authService.getRole != 'STAFF') {
       router.navigateByUrl('dashboard')
     }
     this.itemForm = formBuilder.group({
       eventID: [''],
       title: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      dateTime: ['', [Validators.required]],
+      dateTime: ['', [Validators.required, this.dateValidations]],
       location: ['', [Validators.required]],
       status: ['', [Validators.required]],
       user: ['', [Validators.required]]
@@ -54,26 +52,45 @@ export class ViewEventsComponent implements OnInit {
 
   }
   searchEvent() {
-    //complete this function
     this.eventObj$ = this.httpService.GetEventdetails(this.inputMessage).pipe(
-      map((data: any)=>{
-        if(Array.isArray(data)){
+      map((data: any) => {
+        if (Array.isArray(data)) {
           return data;
-        }else{
+        } else {
           return [data];
         }
       })
     );
-    this.notClicked=false;
+    this.notClicked = false;
   }
 
+  formatDate(date: Date): string {
+    // Convert Date object to string in the format accepted by datetime-local input (YYYY-MM-DDTHH:mm)
+    const year = date.getFullYear();
+    const month = this.padZero(date.getMonth() + 1);
+    const day = this.padZero(date.getDate());
+    const hours = this.padZero(date.getHours());
+    const minutes = this.padZero(date.getMinutes());
+
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  }
+
+  padZero(num: number): string {
+    // Pad single digits with zero
+    return num < 10 ? '0' + num : num.toString();
+  }
 
   onSubmit() {
-    //complete this function
     if (this.itemForm.valid) {
-      console.log(this.inputMessage);
-
-      this.httpService.updateEvent(this.itemForm.value, this.inputMessage).subscribe(
+      this.httpService.updateEvent({
+        eventID: this.itemForm.value.eventID,
+        title: this.itemForm.value.title,
+        description: this.itemForm.value.description,
+        dateTime: new Date(this.itemForm.value.dateTime),
+        location: this.itemForm.value.location,
+        status: this.itemForm.value.status,
+        user: this.itemForm.value.user
+      }, this.inputMessage).subscribe(
         (res: any) => {
           this.responseMsg$ = of('Event updated successfully');
           this.searchEvent();
@@ -83,32 +100,43 @@ export class ViewEventsComponent implements OnInit {
         }
       )
       this.isUpdate = true;
-      if(this.itemForm.value.status === 'Complete')
-      {
+      if (this.itemForm.value.status === 'Complete') {
         this.isCompleted = true;
       }
-    }else{
+    } else {
       this.itemForm.markAllAsTouched();
     }
   }
   edit(val: any) {
     this.isUpdate = false;
     let dateTime = new Date(val.dateTime);
-    // this.itemForm.patchValue({
-    // //complete this function
-    // })
     this.eventObj$.subscribe((data: any) => {
       this.event = data[0];
-      this.itemForm.patchValue(data[0]);
-      console.log(data);
+      this.itemForm.patchValue({
+        eventID: data[0].eventID,
+        title: data[0].title,
+        description: data[0].description,
+        dateTime: this.formatDate(new Date(data[0].dateTime)),
+        location: data[0].location,
+        status: data[0].status,
+        user: data[0].user
+      });
+      // this.itemForm.get('dateTime').patchValue(this.formatDate(new Date(data[0].dateTime)));
+      console.log(this.formatDate(new Date(data[0].dateTime)));
     });
-    // this.itemForm.patchValue({
-    //   title:val.title,
-    //   description:val.description,
-    //   dateTime:dateTime.toISOString().substring(0,10),
-    //   location:val.location,
-    //   status:val.status
-
-    // })
   }
+
+  dateValidations(control: AbstractControl): ValidationErrors | null {
+
+    const today=new Date();
+    const input=new Date(control.value);
+    
+
+    if ( input<today) {
+      return { invalidDate: true };
+    } else {
+      return null;
+    }
+  }
+
 }

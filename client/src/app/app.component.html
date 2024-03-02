@@ -4,6 +4,8 @@
     <img src="assets/logo.png" alt="Logo">
 
     <span class="appName" [routerLink]="['/home']">Event Ease</span>
+    <span style="color: aliceblue;margin-left: 35px;" *ngIf="IsLoggin">Welcome {{userName}} role : {{roleName}}</span>
+
 
   </div>
 

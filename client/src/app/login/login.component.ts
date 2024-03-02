@@ -61,7 +61,8 @@ export class LoginComponent implements OnInit {
           // localStorage.setItem('role', data.role);
           this.authService.SetRole(data.role);
           this.authService.saveToken(data.token);
-
+          this.authService.SetUsername(data.username);
+          this.authService.SetEmail(data.email);
           this.userSuccess$ = of("User created successfully");
           this.router.navigateByUrl('/dashboard');
           setTimeout(() => {
@@ -86,5 +87,9 @@ export class LoginComponent implements OnInit {
 
   registration() {
     this.router.navigateByUrl('/registration');
+  }
+
+  forgotPassword() {
+    this.router.navigateByUrl('/forgot-password');
   }
 }

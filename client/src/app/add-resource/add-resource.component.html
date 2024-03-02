@@ -16,7 +16,7 @@
                           <!-- create input with formControlName="name"  and with validation  -->
                           <input type="text" id="name" formControlName="name" class="form-control" placeholder="resource name">
                           <div *ngIf="itemForm.get('name')?.hasError('required') && itemForm.get('name')?.touched"
-                              class="text-danger">Name is requried</div>
+                              class="text-danger">Name is required</div>
  
  
                       </div>

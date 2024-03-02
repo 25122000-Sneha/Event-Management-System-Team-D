@@ -33,5 +33,11 @@ public class ClientController {
     public ResponseEntity<List<Allocation>> getAllAllocationByEventId(@PathVariable Long eventId) {
         return new ResponseEntity<>(eventService.getAllocationsByEventId(eventId),HttpStatus.OK);
     }
+
+    @GetMapping("/api/client/events")
+    public ResponseEntity<List<Event>> getAllEvents() {
+        // get all events and return the list with status code 200 (OK)
+        return new ResponseEntity<>(eventService.getAllEvents(),HttpStatus.OK);
+    }
  
 }

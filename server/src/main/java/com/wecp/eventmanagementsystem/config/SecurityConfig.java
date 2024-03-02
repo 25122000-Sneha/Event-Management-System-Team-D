@@ -51,6 +51,7 @@ public class SecurityConfig
             .antMatchers("/api/user/login").permitAll()
             .antMatchers("/api/user/register").permitAll()
             .antMatchers("/api/users").permitAll()
+            .antMatchers("/api/user/{userId}").permitAll()
             .antMatchers(HttpMethod.POST,"/api/planner/event").hasAuthority("PLANNER")
             .antMatchers(HttpMethod.GET,"/api/planner/events").hasAuthority("PLANNER")
             .antMatchers(HttpMethod.GET,"/api/planner/events_sorted").hasAuthority("PLANNER")
@@ -62,6 +63,7 @@ public class SecurityConfig
             .antMatchers(HttpMethod.PUT,"/api/staff/update-setup/{eventId}").hasAuthority("STAFF")
             .antMatchers(HttpMethod.GET,"/api/client/booking-details/{eventId}").hasAuthority("CLIENT")
             .antMatchers(HttpMethod.GET,"/api/client/allocation/{eventId}").hasAuthority("CLIENT")
+            .antMatchers(HttpMethod.GET,"/api/client/events").hasAuthority("CLIENT")
             .antMatchers("/api/**").authenticated()
             .and()
             .sessionManagement()
@@ -89,6 +91,4 @@ public class SecurityConfig
         authenticationProvider.setPasswordEncoder(passwordEncoders());
         return authenticationProvider;
     }
-    
-
 }

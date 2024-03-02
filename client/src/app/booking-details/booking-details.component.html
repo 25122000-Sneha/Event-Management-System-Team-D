@@ -31,27 +31,27 @@
                             <th>Date Time</th>                          
                             <th>Location</th>      
                             <th>status</th>  
-                            <th>Allocation</th>
+                            <th  *ngIf="first">Allocation</th>
 
 
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>{{eventObj.eventID}}</td>
-                            <td>{{eventObj.title}}</td>
-                            <td>{{eventObj.description}}</td>
-                            <td>{{eventObj.dateTime | date:'dd-MMM-yyyy'}}</td>
-                            <td>{{eventObj.location}}</td>
-                            <td>{{eventObj.status}}</td>
-                            <td>
+                        <tr *ngFor="let event of eventObj">
+                            <td>{{event.eventID}}</td>
+                            <td>{{event.title}}</td>
+                            <td>{{event.description}}</td>
+                            <td>{{event.dateTime | date:'dd-MMM-yyyy'}}</td>
+                            <td>{{event.location}}</td>
+                            <td>{{event.status}}</td>
+                            <td *ngIf="first">
                                 <span *ngFor="let eventObj of listOfAllocation">Quantity:{{eventObj.quantity}}
                                     <div class="card">
                                         <div class="card-body">
                                             <h6>Resource:</h6>
-                                            <p>Name:{{eventObj.resource?.name}}</p>
+                                            <p>Name:{{eventObj.resource.name}}</p>
                                             <!-- <p >Availability:{{eventObj.resource?.availability}}</p> -->
-                                            <p>Type:{{eventObj.resource?.type}}</p>
+                                            <p>Type:{{eventObj.resource.type}}</p>
                                         </div>
                                     </div>
 
