@@ -1,7 +1,6 @@
  
 <div class="d-flex justify-content-center mt-4">
-  <h2 class="mb-0">Manage Resource</h2>
- 
+  <h4 class="mb-0">Manage Resource</h4>
 </div>
 <div class="col mt-5 justify-content-center">
   <div class="card justify-content-center border border-dark shadow-lg">
@@ -15,7 +14,7 @@
                       <div class="mb-3">
                           <label for="name" class="form-label ">Name : </label>
                           <!-- create input with formControlName="name"  and with validation  -->
-                          <input type="text" id="name" formControlName="name" class="form-control">
+                          <input type="text" id="name" formControlName="name" class="form-control" placeholder="resource name">
                           <div *ngIf="itemForm.get('name')?.hasError('required') && itemForm.get('name')?.touched"
                               class="text-danger">Name is requried</div>
  
@@ -26,7 +25,7 @@
                       <div class="mb-3">
                           <label for="type" class="form-label ">Type : </label>
                           <!-- create input with formControlName="type"  and with validation  -->
-                          <input type="text" id="type" formControlName="type" class="form-control" >
+                          <input type="text" id="type" formControlName="type" class="form-control" placeholder="resource type" >
                           <div *ngIf="itemForm.get('type')?.hasError('required') && itemForm.get('type')?.touched"class="text-danger">
                               Type is Required
                           </div>
@@ -39,9 +38,6 @@
                           <label class="form-label">Availability : </label>
                           <div class="form-check">
                               <!-- create radio with formControlName="availability"  and with validation  -->
- 
- 
- 
                               <label class="form-check-label" for="availability-available">
                                   <input type="radio" formControlName="availability" value="true" class="text-danger">
                                   Avaliable

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
-import { Observable, of } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 
 @Component({
@@ -28,6 +28,9 @@ export class CreateEventComponent implements OnInit {
   userList$: Observable<any>;
   constructor(public router: Router, private formBuilder: FormBuilder, private authService: AuthService, private httpService:HttpService) {
     // this.itemForm = inti this form 
+    if(authService.getRole != 'PLANNER'){      
+      router.navigateByUrl('dashboard')
+    }
     this.itemForm = formBuilder.group({
       title:['',[Validators.required]],
       description:['',[Validators.required]],
@@ -44,7 +47,11 @@ export class CreateEventComponent implements OnInit {
   }
   getUsers() {
      //complete this function
-     this.userList$  = this.httpService.getAllUser();
+     this.userList$  = this.httpService.getAllUser().pipe(
+      map((data:any)=>{
+        return data.filter(r=> r.role === 'CLIENT')
+      })
+     );
   }
 
 
@@ -63,6 +70,7 @@ export class CreateEventComponent implements OnInit {
       });
     }else{
       alert("Form is not valid.");
+      this.itemForm.markAllAsTouched();
     }
   }
 }

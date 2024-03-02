@@ -12,7 +12,6 @@ body {
   .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
     background-color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -29,7 +28,7 @@ body {
   }
    
   .logo {
-    width: 100px;
+    width: 40px;
     display: inline-block;
   }
    
@@ -42,7 +41,7 @@ body {
   }
    
   .slogan {
-    font-size: 14px;
+    font-size: 12px;
     color: #0a0d93;
   }
    
@@ -53,6 +52,7 @@ body {
   .left-half {
     flex: 1;
     padding: 20px;
+   
   }
    
   .right-half {
@@ -62,14 +62,17 @@ body {
   }
    
   .login-form {
-    max-width: 400px;
-    margin: auto;
+    margin:0px  ;
+    width: 60%;
+   
   }
    
   .login-form input {
     width: 100%;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 2px;
+    padding: 3px;
+    height: fit-content;
+    font-size: medium;
     border: 1px solid #ccc;
     border-radius: 5px;
   }

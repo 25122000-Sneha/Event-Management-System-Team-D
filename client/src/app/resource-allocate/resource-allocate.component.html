@@ -23,7 +23,7 @@
                       </select> -->
                       <select formControlName="event" >
                         <option  value="">Choose Event</option>
-                        <option *ngFor="let event of eventList$|async" [ngValue]="event">{{event.eventID}} {{event.title}}</option>
+                        <option *ngFor="let event of eventList$|async" [ngValue]="event">{{event.title}}</option>
           
                       </select>
                       <div *ngIf="itemForm.get('event')?.hasError('required') && itemForm.get('event')?.touched"
@@ -40,7 +40,7 @@
                   <select formControlName="resource" >
                     <option  value="">Choose Resource</option>
                     
-                    <option *ngFor="let resource of filteredResourceList$ | async" [ngValue]="resource">{{resource.resourceID}}. {{resource.name}}</option>
+                    <option *ngFor="let resource of filteredResourceList$ | async" [ngValue]="resource">{{resource.name}}</option>
       
                   </select>
                           <div *ngIf="itemForm.get('resource')?.hasError('required') && itemForm.get('resource')?.touched"
@@ -53,9 +53,9 @@
                 </div>
                 <div class="col-md-3">
                   <div class="mb-3">
-                    <label for="quantity" class="form-label" style="font-weight: bold;">Quantity</label>
+                    <label for="quantity" class="form-label" style="font-weight: bold;">Quantity</label><br>
                       <!-- create input with formControlName="quantity" and validation -->
-                      <input type="number" placeholder="Enter Quantity" id="quantity" formControlName="quantity" min="0" >
+                      <input type="number" placeholder="Enter Quantity" id="quantity" formControlName="quantity" >
                           <div *ngIf="itemForm.get('quantity')?.hasError('required') && itemForm.get('quantity')?.touched"
                               class="text-danger">Quantity is requried</div>
                               <div *ngIf="itemForm.get('quantity')?.hasError('nNegitive') && itemForm.get('quantity')?.touched"

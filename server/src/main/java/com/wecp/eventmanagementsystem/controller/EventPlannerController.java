@@ -29,7 +29,6 @@ public class EventPlannerController {
     @PreAuthorize("hasAuthority('PLANNER')")
     public ResponseEntity<Event> createEvent(@RequestBody Event event) {
         // create event and return created event with status code 201 (CREATED)
-
         return new ResponseEntity<Event>(eventService.createEvent(event), HttpStatus.CREATED);
     }
 
@@ -65,5 +64,11 @@ public class EventPlannerController {
         return new ResponseEntity<>("{\"message\": \"Resource allocated successfully for Event ID: " + eventId + "\"}", HttpStatus.CREATED);
     }
 
-   
+    //to fecth sorted list of events
+    @GetMapping("/api/planner/events_sorted")
+    @PreAuthorize("hasAuthority('PLANNER')")
+    public ResponseEntity<List<Event>> getAllEventsSorted() {
+        // get all events and return the list with status code 200 (OK)
+        return new ResponseEntity<>(eventService.getAllEventsSorted(),HttpStatus.OK);
+    }
 }

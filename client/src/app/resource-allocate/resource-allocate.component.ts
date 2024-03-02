@@ -61,10 +61,12 @@ export class ResourceAllocateComponent {
         (data: any)=>{
           this.showMessage = true;
           this.responseMessage = 'Allocation successfully done';
+    setTimeout(this.refresh,1000);
         },
         (error: any)=>{
           this.showError = true;
           this.errorMessage = 'Unable to allocate resource.';
+          setTimeout(this.refresh,1000)
         }
       );
     }
@@ -73,12 +75,16 @@ export class ResourceAllocateComponent {
   getEvent() {
     //complete this function
     this.eventList$ = this.httpService.GetAllevents();
+    console.log(this.eventList$);
   }
 
   getResources() {
     //complete this function
     this.resourceList$ = this.httpService.GetAllResources();
     this.filteredResourceList$ = this.resourceList$;
+  }
+  refresh(){
+    window.location.reload();
   }
 
 

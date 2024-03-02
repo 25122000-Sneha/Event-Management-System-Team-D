@@ -1,3 +1,4 @@
+<div class="booking">
     <div class="d-flex justify-content-between mt-4">
         <h2 class="mb-0">Manage Events</h2>
 
@@ -6,13 +7,13 @@
         <div class="col-md-10">
             <div class="mb-3">
                 <label for="content" class="form-label ">Event ID</label>
-                create input with name eventID
-                -->
+                <input type="content" name="eventID" [(ngModel)]="formModel.eventID" class="form-control" id="eventID"
+                    placeholder="Search with Event Id">
             </div>
         </div>
         <div class="col-md-2">
             <br>
-            <!-- create button here and call searchEvent() -->
+            <button (click)="searchEvent()" class="btn btn-primary mt-1 w-100">Search</button>
         </div>
     </div>
     <div class="row mt-3">
@@ -31,32 +32,37 @@
                             <th>Location</th>
                             <th>status</th>
                             <th>Allocation</th>
+
+
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- //complete this table Information -->
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{eventObj.eventID}}</td>
+                            <td>{{eventObj.title}}</td>
+                            <td>{{eventObj.description}}</td>
+                            <td>{{eventObj.dateTime | date:'dd-MMM-yyyy'}}</td>
+                            <td>{{eventObj.location}}</td>
+                            <td>{{eventObj.status}}</td>
                             <td>
-                                <span>Quality :
+                                <span *ngFor="let eventObj of listOfAllocation">Quantity:{{eventObj.quantity}}
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4>Resource:</h4>
-                                            <p>Name:</p>
-                                            <p>Availability:</p>
-                                            <p>Type:</p>
+                                            <h6>Resource:</h6>
+                                            <p>Name:{{eventObj.resource?.name}}</p>
+                                            <!-- <p >Availability:{{eventObj.resource?.availability}}</p> -->
+                                            <p>Type:{{eventObj.resource?.type}}</p>
                                         </div>
                                     </div>
+
                                 </span>
+
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+
     </div>
+</div>

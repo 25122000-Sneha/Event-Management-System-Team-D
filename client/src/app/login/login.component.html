@@ -1,62 +1,9 @@
-<!-- <div class="vh-100 d-flex justify-content-center align-items-center">
-  <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6">
-        <div class="border border-3 border-primary"></div>
-        <div class="card bg-white">
-          <div class="card-body p-5">
-            <form class="mb-3 mt-md-4" [formGroup]="itemForm" (ngSubmit)="onLogin()">
-              <h2 class="fw-bold mb-2 text-uppercase ">Event Management and Resource Allocation Platform</h2>
-              <p class=" mb-5">Please enter your user and password!</p>
-              <div class="mb-3">
-                <label for="username" class="form-label ">Username</label>
-                <input type="username" name ="username"formControlName="username" [(ngModel)]="formModel.username" class="form-control" id="username" placeholder="name@example.com">
-                <div *ngIf="itemForm.controls['username'].invalid && (itemForm.controls['username'].dirty || itemForm.controls['username'].touched)"
-                class="ng-dirty">
-                <span *ngIf="itemForm.controls['username'].errors">
-                  <span class="text-danger">Please Enter username .</span>
-                </span>
-              </div>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label ">Password</label>
-                <input type="password" name="password"  formControlName="password" [(ngModel)]="formModel.password" class="form-control" id="password" placeholder="*******">
-                <div *ngIf="itemForm.controls['password'].invalid && (itemForm.controls['password'].dirty || itemForm.controls['password'].touched)"
-                class="ng-dirty">
-                <span *ngIf="itemForm.controls['password'].errors">
-                  <span class="text-danger">Please Enter password .</span>
-                </span>
-              </div>
-              </div>
-
-              <div class="d-grid">
-                <button class="btn btn-outline-dark" type="submit">Login</button>
-              </div>
-            </form>
-            <div>
-              <p class="mb-0  text-center">Don't have an account? <a (click)="registration()"
-                  class="text-primary fw-bold">Registration</a></p>
-            </div>
-            <div *ngIf="showError" class="alert alert-danger" role="alert">
-              {{errorMessage}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
-  <style>
- 
-  </style>
 </head>
 <body>
   <div class="container">
@@ -69,7 +16,7 @@
       <div class="left-half">
         <form class="login-form" [formGroup]="itemForm" (ngSubmit)="onLogin()">
           <h2>Login</h2>
-          <div class="mb-3">
+          <div class="mb-1">
             <label for="username" class="fw-bold form-label ">Username</label>
             <input type="text" id="username" formControlName="username" class="form-control">
             <span *ngIf="this.itemForm.get('username')?.hasError('required') && this.itemForm.get('username')?.touched" class="text-danger">
@@ -79,10 +26,10 @@
               Username is invalid
             </span>
           </div>
-          <div class="mb-3">
+          <div class="mb-1">
             <label for="password" class="fw-bold form-label ">Password</label>
               <!-- //create input with formControlName password -->
-            <input type="text" id="password" formControlName="password" class="form-control">
+            <input type="password" id="password" formControlName="password" class="form-control">
             <span *ngIf="this.itemForm.get('password')?.hasError('required') && this.itemForm.get('password')?.touched" class="text-danger">
               Password is required
             </span>
@@ -95,6 +42,14 @@
             <p class="mb-0  text-center">Don't have an account? <a (click)="registration()"
                 class="text-primary fw-bold">Registration</a></p>
           </div>
+          <ng-container >
+            <div *ngIf="userSuccess$ | async as success" class="alert alert-success">
+                {{success}}
+            </div>
+            <div *ngIf="userError$ | async as error" class="alert alert-danger">
+                {{error}}
+            </div>
+        </ng-container>
         </form>
       </div>
       <div class="right-half">

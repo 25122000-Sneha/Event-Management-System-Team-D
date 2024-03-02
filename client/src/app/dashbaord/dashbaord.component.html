@@ -2,65 +2,93 @@
 <h1 class="text-capitalize">Event Management System</h1>
 </div> -->
 <div class="card">
-    <div class="card-header">
-        <h2>Dashboard</h2>
-    </div>
-    <div class="card-body">
-        <button class="btn" [class.active]="showUserTable" (click)="showUserTable=true">Users</button>
-        <button class="btn" [class.active]="!showUserTable" (click)="showUserTable=false" *ngIf=" roleName === 'PLANNER'">Events</button>
-        <div *ngIf="showUserTable">
-            <table class="user-table">
-                <thead>
-                  <tr>
-                    <th>User id</th>
-                    <th>user Name</th>
-                    <th>Email</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let item of userList$|async">
-                    
-                    <td>{{item.userID}}</td>
-                    <td>{{item.username}}</td>
-                    <td>{{item.email}}</td>
-                    
-                   
-                    <td><button type="button" class="btn btn-outline-warning">Edit</button></td>
-                    <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
-        <div *ngIf="!showUserTable" >
-            <table class="event-table">
-                <thead>
-                  <tr>
-                    <th>id</th>
-                    <th>title</th>
-                    <th>description</th>
-                    <th>date</th>
-                    <th>location</th>
-                    <th>status</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let event of eventList$|async">
-                      <td>{{event.eventID}}</td>
-                      <td>{{event.title}}</td>
-                      <td>{{event.description}}</td>
-                      <td>{{event.dateTime | date}}</td>
-                      <td>{{event.location}}</td>
-                      <td>{{event.status}}</td>
-                      <td><button type="button" class="btn btn-outline-warning">Edit</button></td>
-                    <td><button type="button" class="btn btn-outline-danger">Delete</button></td>
-                  </tr>
-                </tbody>
-              </table>
-        </div>
+  <div class="card-header">
+    <h2>Dashboard</h2>
+  </div>
+  <div class="card-body">
+    <button class="btn" [class.active]="showUserTable" (click)="showUserTable=true"
+      *ngIf=" roleName === 'PLANNER'">Users</button>
+    <button class="btn" [class.active]="!showUserTable" (click)="showUserTable=false"
+      *ngIf=" roleName === 'PLANNER'">Events</button>
+    <div *ngIf="showUserTable">
+      <table class="user-table" *ngIf=" roleName === 'PLANNER'">
+        <thead class="header">
+          <tr>
+            <th>User id</th>
+            <th>user Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of userList$|async">
 
+            <td>{{item.userID}}</td>
+            <td>{{item.username}}</td>
+            <td>{{item.email}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <div *ngIf="!showUserTable">
+      <table class="event-table">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>description</th>
+            <th>date</th>
+            <th>location</th>
+            <th>status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of eventList$|async">
+            <td>{{event.eventID}}</td>
+            <td>{{event.title}}</td>
+            <td>{{event.description}}</td>
+            <td>{{event.dateTime | date}}</td>
+            <td>{{event.location}}</td>
+            <td>{{event.status}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <table class="event-table" *ngIf=" roleName === 'STAFF'">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>description</th>
+          <th>date</th>
+          <th>location</th>
+          <th>status</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of eventList2$|async">
+          <td>{{event.eventID}}</td>
+          <td>{{event.title}}</td>
+          <td>{{event.description}}</td>
+          <td>{{event.dateTime | date}}</td>
+          <td>{{event.location}}</td>
+          <td>{{event.status}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf=" roleName === 'CLIENT'">
+      <div class="container">
+        <h1>User Profile</h1>
+        <div class="profile-info">
+          <p><strong>Name:</strong> John Doe</p>
+          <p><strong>Email:</strong> dummy email</p>
+        </div>
+        <div class="orders-count">
+          <p>Total Events: 10</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

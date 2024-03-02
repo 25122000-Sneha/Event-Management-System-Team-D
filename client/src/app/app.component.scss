@@ -1,51 +1,56 @@
-.search mb-3{
+.search mb-3 {
   width: 100%;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  // background-color: #132257;
   background-color: #020f3f;
-  /* background-image: linear-gradient(to right, #0f0c29, #302b63,#132257); */
   padding: 10px 20px;
 }
-.common{
+
+.common {
   margin-left: 10px;
 }
+
 .logo img {
   border-radius: 25px;
-  height: 40px; /* Adjust height as needed */
+  height: 40px;
+  /* Adjust height as needed */
 }
-.slogan{
+
+.slogan {
   font-size: 12px;
   color: rgb(255, 255, 255);
 }
-.appName{
+
+.appName {
   margin-left: 5px;
   font-weight: bold;
-  color:rgb(255, 242, 0);
+  color: rgb(255, 242, 0);
   font-size: x-large;
-  font-family: 'Brush Script MT', cursive;
+
 }
-.appName:hover{
+
+.appName:hover {
   margin-left: 5px;
   font-weight: bold;
-  color:rgb(5, 241, 56);
+  color: rgb(5, 241, 56);
   font-size: x-large;
   cursor: pointer;
-  font-family: 'Brush Script MT', cursive;
+
 }
 
 .navbar-options a {
   margin-right: 20px;
   text-decoration: none;
   color: #333;
-  padding:5px;
+  padding: 5px;
   color: white;
 }
-.navbar-options a:hover{
+
+.navbar-options a:hover {
   background-color: rgb(255, 255, 255);
   color: rgb(68, 67, 116);
   border: 1px solid;
@@ -56,7 +61,7 @@
 
 
 
-.logout a{
+.logout a {
   text-decoration: none;
   color: #f00b0b;
   font-weight: bolder;
@@ -68,4 +73,32 @@
   padding-right: 7px;
   background-color: #f00b0b;
   color: #000000;
+}
+
+.newUser a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bolder;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-left: 3px;
+  padding: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
+  background-color: #51ed78;
+  color: #050505;
+}
+
+.newUser a:hover {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bolder;
+  border: 1px solid;
+  border-radius: 5px;
+  margin-left: 3px;
+  padding: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
+  background-color: #024904;
+  color: #ffffff;
 }

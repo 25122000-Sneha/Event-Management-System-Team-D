@@ -55,7 +55,7 @@
             <label for="password" class="fw-bold form-label ">Password</label>
             <!-- //create input with  formControlName="password" -->
  
-            <input type="text" name="password" formControlName="password" class="form-control">
+            <input type="password" name="password" formControlName="password" class="form-control">
  
             <div class="text text-danger mt-2" *ngIf="itemForm.get('password')?.hasError('required') &&
            itemForm.get('password')?.touched ">

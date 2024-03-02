@@ -1,6 +1,5 @@
 package com.wecp.eventmanagementsystem.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -20,7 +19,6 @@ public class Allocation {
     private Resource resource;
 
     private int quantity;
-
 
     public Long getAllocationID() {
         return allocationID;

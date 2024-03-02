@@ -31,6 +31,9 @@ export class AddResourceComponent implements OnInit {
  
   constructor(public router:Router,private formBuilder: FormBuilder, private authService:AuthService,private httpService:HttpService)
   {
+    if(authService.getRole != 'PLANNER'){      
+      router.navigateByUrl('dashboard')
+    }
     this.itemForm = this.formBuilder.group({
      name:['',[Validators.required]],
      type:['',[Validators.required]],

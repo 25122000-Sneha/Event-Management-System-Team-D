@@ -12,6 +12,7 @@ export class DashbaordComponent {
   showUserTable:boolean=true;
   userList$: Observable<any>;
   eventList$: Observable<any>;
+  eventList2$: Observable<any>;
   roleName:string='';
   constructor(private httpService:HttpService,private authService:AuthService){
     this.roleName=authService.getRole;
@@ -21,6 +22,7 @@ export class DashbaordComponent {
     // this.getEvent();
     this.getUsers();
     this.getEvents();
+    this.getAllEvents()
   }
   getEvents() {
     this.eventList$=this.httpService.GetAllevents();
@@ -29,4 +31,8 @@ export class DashbaordComponent {
      //complete this function
      this.userList$  = this.httpService.getAllUser();
   }
+  getAllEvents() {
+    //complete this function
+    this.eventList2$  = this.httpService.getAllEventsStaff();
+ }
 }

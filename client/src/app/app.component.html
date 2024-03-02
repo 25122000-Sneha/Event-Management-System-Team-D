@@ -3,27 +3,32 @@
   <div class="logo">
     <img src="assets/logo.png" alt="Logo">
 
-    <span class="appName" [routerLink]="['/dashboard']">Event Ease</span>
+    <span class="appName" [routerLink]="['/home']">Event Ease</span>
 
   </div>
 
   <div class="navbar-options">
-    <a [routerLink]="['/dashboard']">Home</a>
+    <a *ngIf="IsLoggin" [routerLink]="['/dashboard']">Home</a>
     <a *ngIf="roleName === 'PLANNER'" [routerLink]="['/create-event']">Create Event</a>
-    <a  *ngIf="roleName === 'PLANNER'" [routerLink]="['/add-resource']">Add Resource</a>
+    <a *ngIf="roleName === 'PLANNER'" [routerLink]="['/add-resource']">Add Resource</a>
     <a *ngIf="roleName === 'PLANNER'" [routerLink]="['/resource-allocate']">Allocate Resource</a>
     <a *ngIf="roleName === 'CLIENT'" [routerLink]="['/booking-details']">View Bookings</a>
     <a *ngIf="roleName === 'STAFF'" [routerLink]="['/view-events']">View Events</a>
   </div>
 
   <div class="logout">
-    <div *ngIf="!IsLoggin"><a  [routerLink]="['/login']">Login</a></div>
-    <div *ngIf="IsLoggin"><a (click)="logout()" [routerLink]="['/login']">Logout</a></div> 
+    <div *ngIf="IsLoggin"><a (click)="logout()" [routerLink]="['/home']">Logout</a></div>
+  </div>
+  <div class="newUser" *ngIf="!IsLoggin">
+    <div>
+      <a class="loginBtn" [routerLink]="['/login']">Login</a>
+      <a class="signUpBtn"[routerLink]="['/registration']">Register</a>
+    </div>
   </div>
 </nav>
 
 <body>
-  <div class="container mt-4 mx-5">
+  <div>
     <router-outlet>
     </router-outlet>
   </div>
