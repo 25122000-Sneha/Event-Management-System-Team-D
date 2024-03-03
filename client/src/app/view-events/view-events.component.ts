@@ -112,9 +112,7 @@ export class ViewEventsComponent implements OnInit {
         }
       )
       this.isUpdate = true;
-      if (this.itemForm.value.status === 'Complete') {
-        this.isCompleted = true;
-      }
+      
     } else {
       this.itemForm.markAllAsTouched();
     }

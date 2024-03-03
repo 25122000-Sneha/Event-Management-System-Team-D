@@ -11,7 +11,7 @@
                     <!-- create input with formControlName="name"  and with validation  -->
                     <input type="text" id="title" formControlName="title" class="form-control" placeholder="enter title">
                     <div *ngIf="itemForm.get('title')?.hasError('required') && itemForm.get('title')?.touched"
-                        class="text-danger">Title is requried</div>
+                        class="text-danger">Title is required</div>
                 </div>
                 <div class="mb-3">
                     <label for="type" class="form-label ">Description :</label>
@@ -47,7 +47,7 @@
                 <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
                     <select formControlName="status" class="form-control">
-                        <option value="">Choose Status</option>
+                        <option value="" hidden>Choose Status</option>
                         <option value="Initiated">Initiated</option>
                         <option value="Complete" disabled
                         >Complete</option>
@@ -60,7 +60,7 @@
                 <div class="mb-3">
                     <label for="user" class="form-label">Select User</label>
                     <select formControlName="user" class="form-control">
-                        <option value="">Choose user</option>
+                        <option value="" hidden>Choose user</option>
                         <option [ngValue]="user" *ngFor="let user of userList$ | async" >{{user.userID}} {{user.username}}</option>
                         
                     </select>

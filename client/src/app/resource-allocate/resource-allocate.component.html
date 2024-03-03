@@ -22,7 +22,7 @@
                           </option>
                       </select> -->
                       <select formControlName="event" >
-                        <option  value="">Choose Event</option>
+                        <option  value="" hidden>Choose Event</option>
                         <option *ngFor="let event of eventList$|async" [ngValue]="event">{{event.title}}</option>
           
                       </select>
@@ -38,13 +38,13 @@
                     <br>
                   <!-- create select with formControlName="resourceID" and validation -->
                   <select formControlName="resource" >
-                    <option  value="">Choose Resource</option>
+                    <option  value="" hidden>Choose Resource</option>
                     
                     <option *ngFor="let resource of filteredResourceList$ | async" [ngValue]="resource">{{resource.name}}</option>
       
                   </select>
                           <div *ngIf="itemForm.get('resource')?.hasError('required') && itemForm.get('resource')?.touched"
-                              class="text-danger">Resource ID is requried</div>
+                              class="text-danger">Resource ID is required</div>
                               <div *ngIf="itemForm.get('resource')?.hasError('nNegitive') && itemForm.get('resource')?.touched"
                               class="text-danger">Resource ID Should  not be negative </div>
 

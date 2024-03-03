@@ -51,9 +51,6 @@ export class AddResourceComponent implements OnInit {
   onSubmit()
   {
    //complete this function
-   let item = {
-
-   }
  
   if(this.itemForm.valid){
      this.httpService.addResource(this.itemForm.value).subscribe(

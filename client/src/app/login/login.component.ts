@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
       this.showError = false;
       this.httpService.Login(this.itemForm.value).subscribe((data: any) => {
         if (data.userNo != 0) {
-          debugger;
+          //debugger;
           // localStorage.setItem('role', data.role);
           this.authService.SetRole(data.role);
           this.authService.saveToken(data.token);

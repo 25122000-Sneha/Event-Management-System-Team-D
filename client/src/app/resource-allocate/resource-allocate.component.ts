@@ -31,7 +31,7 @@ export class ResourceAllocateComponent {
       router.navigateByUrl('dashboard')
     }
     this.itemForm = this.formBuilder.group({
-      resource: ['', [Validators.required, this.notNegitive]],
+      resource: ['', [Validators.required]],
       quantity: ['', [Validators.required, this.notNegitive]],
       event: ['', [Validators.required]]
 
