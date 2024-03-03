@@ -4,18 +4,23 @@ import { AuthService } from '../../services/auth.service';
 import { HttpService } from '../../services/http.service';
 
 @Component({
-  selector: 'app-dashbaord',
-  templateUrl: './dashbaord.component.html',
-  styleUrls: ['./dashbaord.component.scss']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-export class DashbaordComponent {
+export class DashboardComponent {
   showUserTable:boolean=true;
   userList$: Observable<any>;
   eventList$: Observable<any>;
   eventList2$: Observable<any>;
   roleName:string='';
+  username:string = '';
+  email:string='';
   constructor(private httpService:HttpService,private authService:AuthService){
     this.roleName=authService.getRole;
+    this.username = authService.getUsername;
+    this.email = authService.getEmail;
+
   }
   ngOnInit(): void {
 

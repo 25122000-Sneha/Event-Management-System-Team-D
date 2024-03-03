@@ -104,7 +104,7 @@ export class RegistrationComponent {
           }
         )
       }else{
-        this.userError$ = of("Username alraedy exist.");
+        this.userError$ = of("Username already exists.");
       }
     }
     else {
