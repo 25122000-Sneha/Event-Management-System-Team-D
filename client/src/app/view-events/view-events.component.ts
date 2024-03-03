@@ -16,6 +16,7 @@ import { formatDate } from '@angular/common';
 export class ViewEventsComponent implements OnInit {
 
   itemForm: FormGroup;
+  isUpdateVisible: boolean = false;
   formModel: any = { status: null };
   showError: boolean = false;
   errorMessage: any;
@@ -50,6 +51,9 @@ export class ViewEventsComponent implements OnInit {
   ngOnInit(): void {
 
 
+  }
+  toggleUpdatePageVisibility() {
+    this.isUpdateVisible = !this.isUpdateVisible;
   }
   // dateValidations(control: AbstractControl): ValidationErrors | null {
 
@@ -112,7 +116,9 @@ export class ViewEventsComponent implements OnInit {
         }
       )
       this.isUpdate = true;
-      
+      if (this.itemForm.value.status === 'Complete') {
+        this.isCompleted = true;
+      }
     } else {
       this.itemForm.markAllAsTouched();
     }

@@ -1,8 +1,57 @@
-.card{
-    margin:2%;
+
+.wrapper {
+    position: relative;
 }
-.row{
-    margin:2%;
+
+// .blur-background {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     backdrop-filter: blur(3px); /* Adjust the blur intensity as needed */
+//     z-index: 999;
+// }
+.blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1px); /* Adjust the blur intensity as needed */
+    z-index: 999;
+}
+.update-section {
+    padding: 20px;
+}
+
+
+
+.update-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 800px;
+    width: 60%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.1); /* Add a border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Add a clean shadow effect */
+    margin-top: 280px;
+}
+h2{
+    text-align: center;
+}
+
+
+.form-label {
+    font-weight: bold;
+}
+
+.text-danger {
+    color: red;
 }
 .card-header{
     background-color: #007bff;
@@ -10,3 +59,41 @@
 .header2{
     background-color: #007bff;
 }
+.table thead th {
+    background-color: #007bff; /* Add background color to all table headers */
+    color: white; /* Set text color to white for better contrast */
+}
+.card-body {
+    padding: 0; /* Remove padding */
+}
+.card-body .row {
+    margin-right: 0; /* Remove right margin to ensure alignment */
+}
+
+.col-md-9 {
+    padding-right: 0; /* Remove right padding */
+}
+
+
+
+
+.custom-input::placeholder {
+    color: #999; /* Placeholder text color */
+    font-style: italic; /* Example: italic placeholder text */
+    font-size: 14px; /* Example: font size for the placeholder */
+    text-align: center; /* Align placeholder text to center */
+    margin-left: 30%;
+    margin-right: 10%;
+   
+
+}
+.custom-input {
+    width: 40%; /* Set a specific width for the input field */
+    margin-left: 20%;
+    margin-right: 30%;
+    padding: 4px;
+    margin-top: 15px; /* Adjust the left padding as needed */
+}
+
+
+
