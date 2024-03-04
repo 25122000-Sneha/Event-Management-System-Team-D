@@ -3,7 +3,7 @@
     <h2>Dashboard</h2>
   </div>
   <div class="card-body">
-    <button   class="btn" [class.active]="showUserTable" (click)="showUserTable=true"
+    <button class="btn" [class.active]="showUserTable" (click)="showUserTable=true"
       *ngIf=" roleName === 'PLANNER'">Users</button>
     <button class="btn" [class.active]="!showUserTable" (click)="showUserTable=false"
       *ngIf=" roleName === 'PLANNER'">Events</button>
@@ -50,7 +50,7 @@
         </tbody>
       </table>
     </div>
-    <h5  *ngIf=" roleName === 'STAFF'">All Events</h5>
+    <h5 *ngIf=" roleName === 'STAFF'">All Events</h5>
     <table class="event-table" *ngIf=" roleName === 'STAFF'">
       <thead>
         <tr>
@@ -77,16 +77,21 @@
     </table>
 
     <div *ngIf=" roleName === 'CLIENT'">
-      <div class="container">
-        <h1>Client Profile</h1>
-        <div class="profile-info">
-          <p><strong>Name:</strong> {{username}}</p>
-          <p><strong>Email:</strong> {{email}}</p>
+      <div class="container3">
+        <div class="content">
+          <div class="left-half2">
+            <app-slider></app-slider>
+          </div>
+          <div class="right-half2">
+            <h1>Client Profile</h1>
+            <div class="profile-info">
+              <p><strong>Name:</strong> {{username}}</p>
+              <p><strong>Email:</strong> {{email}}</p>
+            </div>
+          </div>
         </div>
-        <!-- <div class="orders-count">
-          <p>Total Events: 10</p>
-        </div> -->
       </div>
+
     </div>
   </div>
 </div>

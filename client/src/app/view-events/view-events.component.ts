@@ -55,18 +55,7 @@ export class ViewEventsComponent implements OnInit {
   toggleUpdatePageVisibility() {
     this.isUpdateVisible = !this.isUpdateVisible;
   }
-  // dateValidations(control: AbstractControl): ValidationErrors | null {
 
-  //   const today=new Date();
-  //   const input=new Date(control.value);
-    
-
-  //   if ( input<today) {
-  //     return { invalidDate: true };
-  //   } else {
-  //     return null;
-  //   }
-  // }
   searchEvent() {
     this.eventObj$ = this.httpService.GetEventdetails(this.inputMessage).pipe(
       map((data: any) => {
@@ -137,8 +126,7 @@ export class ViewEventsComponent implements OnInit {
         status: data[0].status,
         user: data[0].user
       });
-      // this.itemForm.get('dateTime').patchValue(this.formatDate(new Date(data[0].dateTime)));
-      console.log(this.formatDate(new Date(data[0].dateTime)));
+
     });
   }
 

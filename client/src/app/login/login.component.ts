@@ -17,10 +17,10 @@ export class LoginComponent implements OnInit {
   formModel: any = {};
   showError: boolean = false;
   errorMessage: any;
-  userSuccess$ : Observable<String> = of('');
-  userError$ : Observable<String> = of('');
+  userSuccess$: Observable<String> = of('');
+  userError$: Observable<String> = of('');
   constructor(public router: Router, public httpService: HttpService, private formBuilder: FormBuilder, private authService: AuthService) {
-    if(authService.getLoginStatus){
+    if (authService.getLoginStatus) {
       router.navigateByUrl('dashboard');
     }
     this.itemForm = this.formBuilder.group({
@@ -57,8 +57,7 @@ export class LoginComponent implements OnInit {
       this.showError = false;
       this.httpService.Login(this.itemForm.value).subscribe((data: any) => {
         if (data.userNo != 0) {
-          //debugger;
-          // localStorage.setItem('role', data.role);
+
           this.authService.SetRole(data.role);
           this.authService.saveToken(data.token);
           this.authService.SetUsername(data.username);
@@ -73,13 +72,10 @@ export class LoginComponent implements OnInit {
           this.errorMessage = "Wrong User or Password";
         }
       }, error => {
-        // Handle error
         this.showError = true;
         this.errorMessage = "An error occurred while logging in. Please try again later.";
-        console.error('Login error:', error);
-
         this.userError$ = of("Unable to login user");
-      });;
+      });
     } else {
       this.itemForm.markAllAsTouched();
     }

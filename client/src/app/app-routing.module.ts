@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
- 
- 
-import { AppComponent } from './app.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
  
 import { CreateEventComponent } from './create-event/create-event.component';

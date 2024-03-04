@@ -1,17 +1,12 @@
 package com.wecp.eventmanagementsystem.service;
 
 import com.wecp.eventmanagementsystem.entity.Allocation;
-import com.wecp.eventmanagementsystem.entity.Event;
 import com.wecp.eventmanagementsystem.entity.Resource;
 import com.wecp.eventmanagementsystem.repository.AllocationRepository;
-import com.wecp.eventmanagementsystem.repository.EventRepository;
 import com.wecp.eventmanagementsystem.repository.ResourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ResourceService {
@@ -38,8 +33,8 @@ public class ResourceService {
         Resource resource = resourceRepository.findById(resourceId).get();
         if(resource != null){
             resource.setAvailability(false);
-            resourceRepository.save(resource);//updating the existing resourse that it is not available
-            allocationRepository.save(allocation);//now save the data
+            resourceRepository.save(resource);
+            allocationRepository.save(allocation);
         }
     }
 }

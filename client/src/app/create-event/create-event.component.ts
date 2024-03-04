@@ -42,11 +42,10 @@ export class CreateEventComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    // this.getEvent();
     this.getUsers();
   }
   getUsers() {
-     //complete this function
+
      this.userList$  = this.httpService.getAllUser().pipe(
       map((data:any)=>{
         return data.filter(r=> r.role === 'CLIENT')
@@ -66,31 +65,14 @@ export class CreateEventComponent implements OnInit {
     }
   }
 
-  // dateValidations(control: AbstractControl): ValidationErrors | null {
-
-  //   const today=new Date();
-  //   const input=new Date(control.value);
-    
-
-  //   if ( input<today) {
-  //     return { invalidDate: true };
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
 
   onSubmit() {
-    //compete this function
     
     if(this.itemForm.valid){
-      console.log(this.itemForm.value);
       
       this.httpService.createEvent(this.itemForm.value).subscribe((data: any)=>{
-        console.log("addEvent");
         this.success$ = of("Event created successfully.")
       },(error)=>{
-        console.log("addEvent Error");
         this.error$ = of('Unable to create Event.');
       });
     }else{

@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,10 +25,16 @@ public class UserService implements UserDetailsService {
 
 
     public User registerUser(User user) {
-      user.setPassword(encoder.encode(user.getPassword()));
-      return userRepository.save(user);
-    }
 
+      Optional<User> existingUser = userRepository.findByUsername(user.getUsername());
+  
+      if (existingUser.isPresent()) {
+        return null; // or throw an exception indicating that the user already exists
+      } else {
+        user.setPassword(encoder.encode(user.getPassword()));
+        return userRepository.save(user);
+      }
+    }
     public User getUserByUsername(String username) {
       // get user by username
       return userRepository.findByUsername(username).get();
@@ -47,16 +52,7 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         // load UserDetails by username
         Optional<User> user = userRepository.findByUsername(username);
-        // return new UserInfoUserDetails(userRepository.findByUsername(username));
         return user.map(UserInfoUserDetails::new)
                     .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
-      //   if (user == null) {
-      //     throw new UsernameNotFoundException("User not found");
-      // }
-      // return new org.springframework.security.core.userdetails.User(
-      //         user.getUsername(),
-      //         user.getPassword(),
-      //         new ArrayList<>()
-      // );
     }
 }

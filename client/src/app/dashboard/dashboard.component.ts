@@ -23,8 +23,6 @@ export class DashboardComponent {
 
   }
   ngOnInit(): void {
-
-    // this.getEvent();
     this.getUsers();
     this.getEvents();
     this.getAllEvents()
@@ -33,11 +31,9 @@ export class DashboardComponent {
     this.eventList$=this.httpService.GetAllevents();
   }
   getUsers() {
-     //complete this function
      this.userList$  = this.httpService.getAllUser();
   }
   getAllEvents() {
-    //complete this function
     this.eventList2$  = this.httpService.getAllEventsStaff();
  }
 }

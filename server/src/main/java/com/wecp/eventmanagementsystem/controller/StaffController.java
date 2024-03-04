@@ -1,6 +1,5 @@
 package com.wecp.eventmanagementsystem.controller;
 
-
 import com.wecp.eventmanagementsystem.entity.Event;
 import com.wecp.eventmanagementsystem.service.EventService;
 
@@ -18,22 +17,19 @@ public class StaffController {
     @Autowired
     private EventService eventService;
 
-
     @GetMapping("/api/staff/event-details/{eventId}")
-    //@PreAuthorize("hasAuthority('STAFF')")
     public ResponseEntity<Event> getEventDetails(@PathVariable Long eventId) {
         // get the event details by eventId and return the event with status code 200 ok
         return new ResponseEntity<>(eventService.getEventDetails(eventId), HttpStatus.OK);
     }
 
     @PutMapping("/api/staff/update-setup/{eventId}")
-    //@PreAuthorize("hasAuthority('STAFF')")
     public ResponseEntity<Event> updateEventSetup(@PathVariable Long eventId, @RequestBody Event updatedEvent) {
         // update the event setup and return the updated event with status code 200 ok
-        return new ResponseEntity<>(eventService.updateEventSetup(eventId, updatedEvent),HttpStatus.OK);
+        return new ResponseEntity<>(eventService.updateEventSetup(eventId, updatedEvent), HttpStatus.OK);
     }
+
     @GetMapping("/api/staff/all-event-details")
-    @PreAuthorize("hasAuthority('STAFF')")
     public ResponseEntity<List<Event>> getAllEventDetails() {
         // get the event details by eventId and return the event with status code 200 ok
         return new ResponseEntity<List<Event>>(eventService.getAllEvents(), HttpStatus.OK);

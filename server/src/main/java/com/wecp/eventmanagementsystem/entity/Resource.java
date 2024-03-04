@@ -1,10 +1,8 @@
 package com.wecp.eventmanagementsystem.entity;
 
-
 import javax.persistence.*;
 
 @Entity
-//@Table(name = "resources")
 public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,10 +11,6 @@ public class Resource {
     private String name;
     private String type;
     private boolean availability;
-
-    // public Resource() {
-    // }
-    
 
     public Long getResourceID() {
         return resourceID;

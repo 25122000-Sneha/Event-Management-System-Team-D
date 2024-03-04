@@ -7,8 +7,6 @@ import com.wecp.eventmanagementsystem.repository.AllocationRepository;
 import com.wecp.eventmanagementsystem.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -35,13 +33,13 @@ public class EventService {
         // get event by eventId
         return eventRepository.findById(eventId).get();
     }
-  // update event
+        // update event
     public Event updateEventSetup(Long eventId, Event updatedEvent) {
      
        return eventRepository.save(updatedEvent);
     }
 
-    // get all events sorted by status
+        // get all events sorted by status
     public List<Event> getAllEventsSorted() {
        
         return eventRepository.findAllByOrderByStatusDesc().get();

@@ -1,17 +1,11 @@
 package com.wecp.eventmanagementsystem.entity;
 
-
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Date;
 import java.util.List;
 
-
 @Entity
-//@Table(name = "events")
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,11 +25,9 @@ public class Event {
     @JoinColumn(name = "userID")
     private User user;
 
-    
-
     public Event() {
     }
-    
+
     public Long getEventID() {
         return eventID;
     }
@@ -100,5 +92,4 @@ public class Event {
         this.user = user;
     }
 
-    
 }

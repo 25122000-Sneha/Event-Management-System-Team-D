@@ -1,16 +1,20 @@
 <nav class="navbar">
-
   <div class="logo">
     <img src="assets/logo.png" alt="Logo">
-
-    <span class="appName" [routerLink]="['/home']">Event Ease</span>
-    <span style="color: aliceblue;margin-left: 35px;" *ngIf="IsLoggin">Welcome {{userName}} role : {{roleName}}</span>
-
-
+    <div>
+      <div class="appName" [routerLink]="['/home']">Event Ease</div>
+      <div class="slogan">Where moments become memories</div>
+    </div>
+    <div class="detail" *ngIf="IsLoggin">
+      <div class="welcome">Welcome {{userName}}</div>
+      <div class="role">Role : {{roleName}}</div>
+    </div>
   </div>
 
+
+
   <div class="navbar-options" style="color: white;">
-   
+
     <a *ngIf="IsLoggin" [routerLink]="['/dashboard']">Home</a>
     <a *ngIf="roleName === 'PLANNER'" [routerLink]="['/create-event']">Create Event</a>
     <a *ngIf="roleName === 'PLANNER'" [routerLink]="['/add-resource']">Add Resource</a>
@@ -25,10 +29,11 @@
   <div class="newUser" *ngIf="!IsLoggin">
     <div>
       <a class="loginBtn" [routerLink]="['/login']">Login</a>
-      <a class="signUpBtn"[routerLink]="['/registration']">Register</a>
+      <a class="signUpBtn" [routerLink]="['/registration']">Register</a>
     </div>
   </div>
 </nav>
+
 
 <body>
   <div>

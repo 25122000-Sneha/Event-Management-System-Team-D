@@ -2,16 +2,6 @@
 .wrapper {
     position: relative;
 }
-
-// .blur-background {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     backdrop-filter: blur(3px); /* Adjust the blur intensity as needed */
-//     z-index: 999;
-// }
 .blur-background {
     position: absolute;
     top: 0;
@@ -24,9 +14,6 @@
 .update-section {
     padding: 20px;
 }
-
-
-
 .update-form {
     position: absolute;
     top: 50%;
@@ -60,39 +47,39 @@ h2{
     background-color: #007bff;
 }
 .table thead th {
-    background-color: #007bff; /* Add background color to all table headers */
-    color: white; /* Set text color to white for better contrast */
+    background-color: #007bff; 
+    color: white; 
 }
 .card-body {
-    padding: 0; /* Remove padding */
+    padding: 0;
 }
 .card-body .row {
-    margin-right: 0; /* Remove right margin to ensure alignment */
+    margin-right: 0;
 }
 
 .col-md-9 {
-    padding-right: 0; /* Remove right padding */
+    padding-right: 0;
 }
 
 
 
 
 .custom-input::placeholder {
-    color: #999; /* Placeholder text color */
-    font-style: italic; /* Example: italic placeholder text */
-    font-size: 14px; /* Example: font size for the placeholder */
-    text-align: center; /* Align placeholder text to center */
+    color: #999;
+    font-style: italic;
+    font-size: 14px;
+    text-align: center;
     margin-left: 30%;
     margin-right: 10%;
    
 
 }
 .custom-input {
-    width: 40%; /* Set a specific width for the input field */
+    width: 40%;
     margin-left: 20%;
     margin-right: 30%;
     padding: 4px;
-    margin-top: 15px; /* Adjust the left padding as needed */
+    margin-top: 15px; 
 }
 
 

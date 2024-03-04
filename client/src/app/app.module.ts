@@ -15,6 +15,7 @@ import { ResourceAllocateComponent } from './resource-allocate/resource-allocate
 import { ViewEventsComponent } from './view-events/view-events.component';
 import { BookingDetailsComponent } from './booking-details/booking-details.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { SliderComponent } from './slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
       ViewEventsComponent,
       BookingDetailsComponent,
       RegistrationComponent,
-      ForgotPasswordComponent
+      ForgotPasswordComponent,
+      SliderComponent
   ],
   imports: [
     BrowserModule,

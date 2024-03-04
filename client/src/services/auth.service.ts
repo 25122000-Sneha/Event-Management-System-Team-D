@@ -6,50 +6,44 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  private token: string | null = null;
-  private isLoggedIn: boolean = false;
-
-  constructor() {}
-  // Method to save token received from login
   saveToken(token: string) {
-    this.token = token;
-    this.isLoggedIn = true;
-    // Optionally, you can save the token to local storage or a cookie for persistence
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('token', token);
   }
+
   SetRole(role: any) {
-    localStorage.setItem('role', role);
+    sessionStorage.setItem('role', role);
   }
+
   get getRole(): string | null {
-    return localStorage.getItem('role');
+    return sessionStorage.getItem('role');
   }
+
   SetUsername(username:string){
-    localStorage.setItem('username',username);
+    sessionStorage.setItem('username',username);
   }
+
   get getUsername() {
-    return localStorage.getItem('username');
+    return sessionStorage.getItem('username');
   }
+
   SetEmail(email:string){
-    localStorage.setItem('email',email);
+    sessionStorage.setItem('email',email);
   }
+
   get getEmail(){
-    return localStorage.getItem('email');
+    return sessionStorage.getItem('email');
   }
-  // Method to retrieve login status
+
   get getLoginStatus(): boolean {
-
-    return !!localStorage.getItem('token');
-
+    return !!sessionStorage.getItem('token');
   }
+
   getToken(): string | null {
-    this.token = localStorage.getItem('token');
-    return this.token;
+    return sessionStorage.getItem('token');
   }
+
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    this.token = null;
-    this.isLoggedIn = false
+    sessionStorage.clear();
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -13,9 +13,12 @@ import { HttpService } from '../../services/http.service';
 export class ForgotPasswordComponent implements OnInit {
 
   itemForm: FormGroup;
-  success$ : Observable<String> = of('');
-  error$ : Observable<String> = of('');
-  constructor(public router: Router, public httpService: HttpService, private formBuilder: FormBuilder, private authService: AuthService) {
+  success$: Observable<String> = of('');
+  error$: Observable<String> = of('');
+
+  showFlashMessage = false;
+  success: boolean = false;
+  constructor(private renderer: Renderer2, public router: Router, public httpService: HttpService, private formBuilder: FormBuilder, private authService: AuthService) {
     if (authService.getLoginStatus) {
       router.navigateByUrl('dashboard');
     }
@@ -42,7 +45,7 @@ export class ForgotPasswordComponent implements OnInit {
     return null;
   }
 
-  
+
 
   noSpaceValidations(control: AbstractControl): ValidationErrors | null {
     const controlValue = control.value as string;
@@ -59,29 +62,49 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit(): void {
     if (this.itemForm.valid) {
-      this.httpService.getAllUser().subscribe((data:any)=>{
-        for(let user of data){
-          if(user.username == this.itemForm.value.username){
-            this.httpService.updateUser(user.userID,{
+      this.httpService.getAllUser().subscribe((data: any) => {
+        let found: boolean = false;
+        for (let user of data) {
+          if (user.username == this.itemForm.value.username) {
+            found = true;
+            this.httpService.updateUser(user.userID, {
               userID: user.userID,
-              username : user.username,
+              username: user.username,
               email: user.email,
-              password : this.itemForm.value.password,
-              role : user.role
+              password: this.itemForm.value.password,
+              role: user.role
             }).subscribe();
+
             this.success$ = of('Password updated successfully');
+            this.flashMessage();
+            setTimeout(() => { this.success$ = of('') }, 2000);
           }
         }
-      }
-      
+        if (!found) {
+          this.error$ = of('Username not found');
+          this.flashMessage();
+          setTimeout(() => { this.error$ = of('') }, 2000);
+        }
+
+      })
 
 
-      )
-            
     }
     else {
-      console.log("Invalid form");
+
       this.error$ = of('Sorry! Passwords did not match');
+      this.flashMessage();
+      setTimeout(() => { this.error$ = of('') }, 2000);
     }
+
+  }
+
+
+  flashMessage() {
+    this.showFlashMessage = true;
+    setTimeout(() => {
+      this.showFlashMessage = false;
+
+    }, 2000); // Hide after 2 seconds
   }
 }

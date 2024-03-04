@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.wecp.eventmanagementsystem.entity.User;
 
-
 public class UserInfoUserDetails implements UserDetails {
 
     private String name;
@@ -19,9 +18,9 @@ public class UserInfoUserDetails implements UserDetails {
     private List<GrantedAuthority> authorities;
 
     public UserInfoUserDetails(User userInfo) {
-        name=userInfo.getUsername();
-        password=userInfo.getPassword();
-        authorities= Arrays.stream(userInfo.getRole().split(","))
+        name = userInfo.getUsername();
+        password = userInfo.getPassword();
+        authorities = Arrays.stream(userInfo.getRole().split(","))
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }
@@ -60,5 +59,5 @@ public class UserInfoUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    
+
 }

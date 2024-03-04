@@ -1,11 +1,8 @@
 package com.wecp.eventmanagementsystem.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
 @Entity
-//@Table(name = "allocations")
 public class Allocation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

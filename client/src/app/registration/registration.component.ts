@@ -67,45 +67,25 @@ export class RegistrationComponent {
       return null;
     }
   }
-
-  UserNameValidation(controlValue: String): boolean {
-    // const controlValue = control.value as string;
-    // console.log(this.userList);
-    console.log(controlValue);
-    
-    if(controlValue != null){
-      for(let user of this.userList){
-        if(user.username == controlValue){
-          return false
-        }
-      }
-    }
-    return true;
-
-  }
-
   ngOnInit(): void {
-    this.httpService.getAllUser().subscribe((data: any) => {
-      this.userList = data;      
-    });
+   
   }
   onRegister() {
-    //complete this function
+
     if (this.itemForm.valid) {
-      if(this.UserNameValidation(this.itemForm.value.username)){
+
         this.httpService.registerUser(this.itemForm.value).subscribe(
           (res: any) => {
-            console.log("success");
             this.userSuccess$ = of("User created successfully");
           },
           (error) => {
-            console.log("error");
-            this.userError$ = of("Unable to create user");
+            if (error.status == 400) {
+              this.userError$ = of("User already exists.");
+            } else {
+              this.userError$ = of("Unable to create user");
+            }
           }
         )
-      }else{
-        this.userError$ = of("Username already exists.");
-      }
     }
     else {
       this.userError$ = of("Unable to create user");

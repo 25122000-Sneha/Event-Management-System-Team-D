@@ -50,8 +50,7 @@ export class AddResourceComponent implements OnInit {
  
   onSubmit()
   {
-   //complete this function
- 
+
   if(this.itemForm.valid){
      this.httpService.addResource(this.itemForm.value).subscribe(
       (res)=>{
@@ -70,7 +69,7 @@ export class AddResourceComponent implements OnInit {
   }
  
   getResources() {
-     //complete this function
+
      this.resourceList$  = this.httpService.GetAllResources();
 
   }
