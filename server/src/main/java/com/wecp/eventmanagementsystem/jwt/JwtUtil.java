@@ -12,7 +12,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/*
+ * generates token 
+ * extracts username 
+ * check if token is expired 
+ * validate the token
+ */
 @Component
 public class JwtUtil {
  

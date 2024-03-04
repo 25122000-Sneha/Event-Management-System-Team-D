@@ -3,6 +3,7 @@ package com.wecp.eventmanagementsystem.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+//for taking login request and converting JSON to JAVA object
 public class LoginRequest {
 
     private String username;

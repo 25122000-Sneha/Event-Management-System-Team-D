@@ -9,15 +9,15 @@ import { HttpService } from '../../services/http.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  showUserTable:boolean=true;
+  showUserTable: boolean = true;
   userList$: Observable<any>;
   eventList$: Observable<any>;
   eventList2$: Observable<any>;
-  roleName:string='';
-  username:string = '';
-  email:string='';
-  constructor(private httpService:HttpService,private authService:AuthService){
-    this.roleName=authService.getRole;
+  roleName: string = '';
+  username: string = '';
+  email: string = '';
+  constructor(private httpService: HttpService, private authService: AuthService) {
+    this.roleName = authService.getRole;
     this.username = authService.getUsername;
     this.email = authService.getEmail;
 
@@ -28,12 +28,12 @@ export class DashboardComponent {
     this.getAllEvents()
   }
   getEvents() {
-    this.eventList$=this.httpService.GetAllevents();
+    this.eventList$ = this.httpService.GetAllevents();
   }
   getUsers() {
-     this.userList$  = this.httpService.getAllUser();
+    this.userList$ = this.httpService.getAllUser();
   }
   getAllEvents() {
-    this.eventList2$  = this.httpService.getAllEventsStaff();
- }
+    this.eventList2$ = this.httpService.getAllEventsStaff();
+  }
 }

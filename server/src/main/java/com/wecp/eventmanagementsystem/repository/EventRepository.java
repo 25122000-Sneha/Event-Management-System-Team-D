@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EventRepository extends JpaRepository<Event,Long> {
-    // extend jpa repository and add custom method if needed
+    // getting all the orders by status in decscending order
    public  Optional<List<Event>> findAllByOrderByStatusDesc();
 }

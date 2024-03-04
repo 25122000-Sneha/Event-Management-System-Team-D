@@ -8,7 +8,6 @@ import com.wecp.eventmanagementsystem.service.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,48 +21,43 @@ public class EventPlannerController {
     @Autowired
     private ResourceService resourceService;
 
+    // create event and return created event with status code 201 (CREATED)
     @PostMapping("/api/planner/event")
-
     public ResponseEntity<Event> createEvent(@RequestBody Event event) {
-        // create event and return created event with status code 201 (CREATED)
         return new ResponseEntity<Event>(eventService.createEvent(event), HttpStatus.CREATED);
     }
 
+    // get all events and return the list with status code 200 (OK)
     @GetMapping("/api/planner/events")
     public ResponseEntity<List<Event>> getAllEvents() {
-        // get all events and return the list with status code 200 (OK)
         return new ResponseEntity<>(eventService.getAllEvents(), HttpStatus.OK);
     }
 
+    // add resource and return added resource with status code 201 (CREATED)
     @PostMapping("/api/planner/resource")
     public ResponseEntity<Resource> addResource(@RequestBody Resource resource) {
-        // add resource and return added resource with status code 201 (CREATED)
         return new ResponseEntity<>(resourceService.addResource(resource), HttpStatus.CREATED);
-
     }
 
+    // get all resources and return the list with status code 200 (OK)
     @GetMapping("/api/planner/resources")
     public ResponseEntity<List<Resource>> getAllResources() {
-        // get all resources and return the list with status code 200 (OK)
         return new ResponseEntity<>(resourceService.getAllResources(), HttpStatus.OK);
     }
 
+    // allocate resources for the event and return a success message with status
+    // code CREATED
     @PostMapping("/api/planner/allocate-resources")
     public ResponseEntity<String> allocateResources(@RequestParam Long eventId, @RequestParam Long resourceId,
             @RequestBody Allocation allocation) {
-
-        // allocate resources for the event and return a success message with status
-        // code 201 (CREATED)
         resourceService.allocateResources(eventId, resourceId, allocation);
         return new ResponseEntity<>("{\"message\": \"Resource allocated successfully for Event ID: " + eventId + "\"}",
                 HttpStatus.CREATED);
     }
 
-    // to fecth sorted list of events
+    // to fetch sorted list of events
     @GetMapping("/api/planner/events_sorted")
-    @PreAuthorize("hasAuthority('PLANNER')")
     public ResponseEntity<List<Event>> getAllEventsSorted() {
-        // get all events and return the list with status code 200 (OK)
         return new ResponseEntity<>(eventService.getAllEventsSorted(), HttpStatus.OK);
     }
 }

@@ -11,12 +11,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.wecp.eventmanagementsystem.entity.User;
 
+//this class provides user details information
 public class UserInfoUserDetails implements UserDetails {
 
     private String name;
     private String password;
     private List<GrantedAuthority> authorities;
 
+    // constructor for getting username, password and list of authorities
     public UserInfoUserDetails(User userInfo) {
         name = userInfo.getUsername();
         password = userInfo.getPassword();

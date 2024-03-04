@@ -15,7 +15,6 @@ import { Observable, of } from 'rxjs';
 export class LoginComponent implements OnInit {
   itemForm: FormGroup;
   formModel: any = {};
-  showError: boolean = false;
   errorMessage: any;
   userSuccess$: Observable<String> = of('');
   userError$: Observable<String> = of('');
@@ -54,7 +53,7 @@ export class LoginComponent implements OnInit {
   }
   onLogin() {
     if (this.itemForm.valid) {
-      this.showError = false;
+      
       this.httpService.Login(this.itemForm.value).subscribe((data: any) => {
         if (data.userNo != 0) {
 
@@ -68,11 +67,11 @@ export class LoginComponent implements OnInit {
             window.location.reload();
           }, 500);
         } else {
-          this.showError = true;
+         
           this.errorMessage = "Wrong User or Password";
         }
       }, error => {
-        this.showError = true;
+       
         this.errorMessage = "An error occurred while logging in. Please try again later.";
         this.userError$ = of("Unable to login user");
       });

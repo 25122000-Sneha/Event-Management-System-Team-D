@@ -22,16 +22,16 @@ import { SliderComponent } from './slider/slider.component';
   declarations: [
     AppComponent,
     LoginComponent,
-      RegistrationComponent,
-      DashboardComponent,    
-      CreateEventComponent,
-      AddResourceComponent,
-      ResourceAllocateComponent,
-      ViewEventsComponent,
-      BookingDetailsComponent,
-      RegistrationComponent,
-      ForgotPasswordComponent,
-      SliderComponent
+    RegistrationComponent,
+    DashboardComponent,
+    CreateEventComponent,
+    AddResourceComponent,
+    ResourceAllocateComponent,
+    ViewEventsComponent,
+    BookingDetailsComponent,
+    RegistrationComponent,
+    ForgotPasswordComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +40,7 @@ import { SliderComponent } from './slider/slider.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [HttpService,HttpClientModule ],
+  providers: [HttpService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

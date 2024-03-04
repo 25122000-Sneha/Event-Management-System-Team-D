@@ -9,7 +9,6 @@
                 <hr>
                 <div class="mb-3">
                     <label for="name" class="form-label ">Title :</label>
-                    <!-- create input with formControlName="name"  and with validation  -->
                     <input type="text" id="title" formControlName="title" class="form-control"
                         placeholder="enter title">
                     <div *ngIf="itemForm.get('title')?.hasError('required') && itemForm.get('title')?.touched"
@@ -17,7 +16,6 @@
                 </div>
                 <div class="mb-3">
                     <label for="type" class="form-label ">Description :</label>
-                    <!-- create input with formControlName="type"  and with validation  -->
                     <input type="text" id="description" formControlName="description" class="form-control"
                         placeholder="enter description">
                     <div class="text-danger"
@@ -27,7 +25,6 @@
                 </div>
                 <div class="mb-3">
                     <label for="dateTime" class="form-label ">Date:</label>
-                    <!-- create input with formControlName="type"  and with validation  -->
                     <input type="datetime-local" id="dateTime" formControlName="dateTime" class="form-control"
                         placeholder="select date">
                     <div class="text-danger"

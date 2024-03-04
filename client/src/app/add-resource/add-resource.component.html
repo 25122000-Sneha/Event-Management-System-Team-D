@@ -22,7 +22,6 @@
                     <div class="col-md-3">
                         <div class="mb-3">
                             <label for="type" class="form-label ">Type : </label>
-                            <!-- create input with formControlName="type"  and with validation  -->
                             <input type="text" id="type" formControlName="type" class="form-control"
                                 placeholder="resource type">
                             <div *ngIf="itemForm.get('type')?.hasError('required') && itemForm.get('type')?.touched"
@@ -37,7 +36,6 @@
 
                             <label class="form-label">Availability : </label>
                             <div class="form-check">
-                                <!-- create radio with formControlName="availability"  and with validation  -->
                                 <label class="form-check-label" for="availability-available">
                                     <input type="radio" formControlName="availability" value="true" class="text-danger">
                                     Avaliable

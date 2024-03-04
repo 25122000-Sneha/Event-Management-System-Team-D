@@ -2,6 +2,7 @@ package com.wecp.eventmanagementsystem.entity;
 
 import javax.persistence.*;
 
+// creates user entity 
 @Entity
 @Table(name = "users")
 public class User {

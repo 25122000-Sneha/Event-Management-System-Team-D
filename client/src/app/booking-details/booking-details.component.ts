@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpService } from '../../services/http.service';
 import { AuthService } from '../../services/auth.service';
@@ -12,7 +12,6 @@ import { AuthService } from '../../services/auth.service';
 export class BookingDetailsComponent implements OnInit {
 
   formModel: any = { eventID: null, status: null };
-  showError: boolean = false;
   errorMessage: any;
   eventObj: any = [];
   allocations: any = [];
@@ -46,7 +45,6 @@ export class BookingDetailsComponent implements OnInit {
     });
   }
   searchEvent() {
-    debugger;
     this.first = true;
     if (this.formModel.eventID != null) {
       this.isUpdate = false;
@@ -64,8 +62,6 @@ export class BookingDetailsComponent implements OnInit {
           this.listOfAllocation = [];
         }
       }, error => {
-        // Handle error
-        this.showError = true;
         this.errorMessage = "An error occurred.. Please try again later.";
       });
     }

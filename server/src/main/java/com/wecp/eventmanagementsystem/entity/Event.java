@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 
+
+/*
+ * creates event entity with one-to-many association to allocation and
+ *  many-to-one association to user
+ */
 @Entity
 public class Event {
     @Id

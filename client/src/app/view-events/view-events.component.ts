@@ -69,8 +69,8 @@ export class ViewEventsComponent implements OnInit {
     this.notClicked = false;
   }
 
-  formatDate(date: Date): string {
     // Convert Date object to string in the format accepted by datetime-local input (YYYY-MM-DDTHH:mm)
+  formatDate(date: Date): string {
     const year = date.getFullYear();
     const month = this.padZero(date.getMonth() + 1);
     const day = this.padZero(date.getDate());
@@ -80,8 +80,8 @@ export class ViewEventsComponent implements OnInit {
     return `${year}-${month}-${day} ${hours}:${minutes}`;
   }
 
-  padZero(num: number): string {
     // Pad single digits with zero
+  padZero(num: number): string {
     return num < 10 ? '0' + num : num.toString();
   }
 

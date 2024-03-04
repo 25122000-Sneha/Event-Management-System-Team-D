@@ -17,21 +17,22 @@ public class ResourceService {
     @Autowired
     private AllocationRepository allocationRepository;
 
+    // add resouce to database
     public Resource addResource(Resource resource) {
-      // add resouce to database
-      return resourceRepository.save(resource);
+        return resourceRepository.save(resource);
     }
 
+    // get all resources
     public List<Resource> getAllResources() {
-        // get all resources
         return (List<Resource>) resourceRepository.findAll();
     }
 
+    // check if resource is available or not
+    // if resouce is available then allocate the resource to event and set
+    // availability to false
     public void allocateResources(Long eventId, Long resourceId, Allocation allocation) {
-        // check if resource is available or not
-        // if resouce is available then allocate the resource to event  and set availability to false
         Resource resource = resourceRepository.findById(resourceId).get();
-        if(resource != null){
+        if (resource != null) {
             resource.setAvailability(false);
             resourceRepository.save(resource);
             allocationRepository.save(allocation);

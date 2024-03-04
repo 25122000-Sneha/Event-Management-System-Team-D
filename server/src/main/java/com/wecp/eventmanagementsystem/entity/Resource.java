@@ -2,6 +2,7 @@ package com.wecp.eventmanagementsystem.entity;
 
 import javax.persistence.*;
 
+//creates resource entity 
 @Entity
 public class Resource {
     @Id

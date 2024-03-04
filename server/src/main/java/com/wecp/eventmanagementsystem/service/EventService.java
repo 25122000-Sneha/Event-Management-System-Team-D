@@ -1,6 +1,5 @@
 package com.wecp.eventmanagementsystem.service;
 
-
 import com.wecp.eventmanagementsystem.entity.Allocation;
 import com.wecp.eventmanagementsystem.entity.Event;
 import com.wecp.eventmanagementsystem.repository.AllocationRepository;
@@ -16,32 +15,33 @@ public class EventService {
     private EventRepository eventRepository;
     @Autowired
     private AllocationRepository allocationRepository;
-    public List<Allocation> getAllocationsByEventId(Long eventId){
+
+    public List<Allocation> getAllocationsByEventId(Long eventId) {
         return allocationRepository.findByEvent(eventId);
     }
+
+    // save event in databse
     public Event createEvent(Event event) {
-       // save event in databse
-       return eventRepository.save(event);
+        return eventRepository.save(event);
     }
 
+    // get all events
     public List<Event> getAllEvents() {
-        // get all events
         return (List<Event>) eventRepository.findAll();
     }
 
+    // get event by eventId
     public Event getEventDetails(Long eventId) {
-        // get event by eventId
         return eventRepository.findById(eventId).get();
     }
-        // update event
+
+    // update event
     public Event updateEventSetup(Long eventId, Event updatedEvent) {
-     
-       return eventRepository.save(updatedEvent);
+        return eventRepository.save(updatedEvent);
     }
 
-        // get all events sorted by status
+    // get all events sorted by status
     public List<Event> getAllEventsSorted() {
-       
         return eventRepository.findAllByOrderByStatusDesc().get();
     }
 

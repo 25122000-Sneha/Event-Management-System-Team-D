@@ -23,7 +23,6 @@
           <h2>Register User</h2>
           <div class="mb-3">
             <label for="username" class="fw-bold form-label">Username</label>
-            <!-- //create input with  formControlName="username" -->
             <input type="text" name="username" formControlName="username" class="form-control">
             <div class="text text-danger mt-2" *ngIf="itemForm.get('username')?.hasError('required') &&
            itemForm.get('username')?.touched ">
@@ -75,7 +74,6 @@
 
           <div class="mb-3">
 
-            <!-- //create input with  formControlName="role" -->
             <label for="role">Select User Role</label>
             <select name="role" formControlName="role">
 

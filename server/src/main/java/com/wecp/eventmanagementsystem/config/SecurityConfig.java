@@ -24,17 +24,18 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 public class SecurityConfig {
 
+    // injecting JwtRequestFilter
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
+    // creates a bean for UserDetailsService
     @Bean
-    // authentication
     public UserDetailsService userDetailsService() {
         return new UserService();
     }
 
+    // method to filter request on the basis of roles
     @Bean
-    // method to filter request on role basis
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.cors().and().csrf().disable()
                 .authorizeRequests()
@@ -64,18 +65,20 @@ public class SecurityConfig {
                 .build();
     }
 
+    // this method creates a bean for BCryptPasswordEncoder to encode passwords
+    // securely
     @Bean
-    // this function encodes the password
     public PasswordEncoder passwordEncoders() {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
     // manage authentication requests
+    @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
 
+    // creates a bean for AuthenticationProvider for authenticating users
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();

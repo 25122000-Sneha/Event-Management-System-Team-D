@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AllocationRepository  extends JpaRepository<Allocation,Long> {
-    // extend jpa repository and add custom methods if needed
+    //getting all the allocation for a particular event id using jpql query
     @Query("SELECT A FROM Allocation A WHERE A.event.eventID=:eventID")
     public List<Allocation> findByEvent(@Param("eventID") Long eventID);
 }

@@ -23,21 +23,21 @@ export class CreateEventComponent implements OnInit {
   showMessage: any;
   responseMessage: any;
 
-  error$ : Observable<String> = of('');
-  success$ : Observable<String> = of('');
+  error$: Observable<String> = of('');
+  success$: Observable<String> = of('');
   userList$: Observable<any>;
-  constructor(public router: Router, private formBuilder: FormBuilder, private authService: AuthService, private httpService:HttpService) {
-    // this.itemForm = inti this form 
-    if(authService.getRole != 'PLANNER'){      
+  constructor(public router: Router, private formBuilder: FormBuilder, private authService: AuthService, private httpService: HttpService) {
+
+    if (authService.getRole != 'PLANNER') {
       router.navigateByUrl('dashboard')
     }
     this.itemForm = formBuilder.group({
-      title:['',[Validators.required]],
-      description:['',[Validators.required]],
-      dateTime:['',[Validators.required, this.dateValidations]],
-      location:['',[Validators.required]],
-      status:['',[Validators.required]],
-      user:['',[Validators.required]]
+      title: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      dateTime: ['', [Validators.required, this.dateValidations]],
+      location: ['', [Validators.required]],
+      status: ['', [Validators.required]],
+      user: ['', [Validators.required]]
     });
   }
   ngOnInit(): void {
@@ -46,19 +46,19 @@ export class CreateEventComponent implements OnInit {
   }
   getUsers() {
 
-     this.userList$  = this.httpService.getAllUser().pipe(
-      map((data:any)=>{
-        return data.filter(r=> r.role === 'CLIENT')
+    this.userList$ = this.httpService.getAllUser().pipe(
+      map((data: any) => {
+        return data.filter(r => r.role === 'CLIENT')
       })
-     );
+    );
   }
   dateValidations(control: AbstractControl): ValidationErrors | null {
 
-    const today=new Date();
-    const input=new Date(control.value);
-    
+    const today = new Date();
+    const input = new Date(control.value);
 
-    if ( input<today) {
+
+    if (input < today) {
       return { invalidDate: true };
     } else {
       return null;
@@ -67,15 +67,15 @@ export class CreateEventComponent implements OnInit {
 
 
   onSubmit() {
-    
-    if(this.itemForm.valid){
-      
-      this.httpService.createEvent(this.itemForm.value).subscribe((data: any)=>{
+
+    if (this.itemForm.valid) {
+
+      this.httpService.createEvent(this.itemForm.value).subscribe((data: any) => {
         this.success$ = of("Event created successfully.")
-      },(error)=>{
+      }, (error) => {
         this.error$ = of('Unable to create Event.');
       });
-    }else{
+    } else {
       alert("Form is not valid.");
       this.itemForm.markAllAsTouched();
     }

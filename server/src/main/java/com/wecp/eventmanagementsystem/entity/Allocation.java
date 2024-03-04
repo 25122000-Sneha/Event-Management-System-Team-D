@@ -2,6 +2,10 @@ package com.wecp.eventmanagementsystem.entity;
 
 import javax.persistence.*;
 
+/*
+ * creates allocation entity with many-to-one mapping to event 
+ * and one-to-one association with resource
+ */
 @Entity
 public class Allocation {
     @Id
