@@ -17,6 +17,7 @@ import { BookingDetailsComponent } from './booking-details/booking-details.compo
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SliderComponent } from './slider/slider.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,

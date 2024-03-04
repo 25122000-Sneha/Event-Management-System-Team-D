@@ -488,6 +488,12 @@ h2 {
   opacity: 1;
 }
 
+.icons {
+  height: 40px;
+  width: 40px;
+  margin:10px;
+}
+
 .footer-basic .social {
   text-align: center;
   padding-bottom: 25px;
@@ -506,6 +512,7 @@ h2 {
   color: inherit;
   opacity: 0.75;
 }
+
 
 .footer-basic .social>a:hover {
   opacity: 0.9;
