@@ -46,7 +46,7 @@ export class ResourceAllocateComponent {
       })
     );
   }
-
+//custom validator for non negative quantity
   notNegitive(control: AbstractControl): ValidationErrors | null {
     if (control.value < 0) {
       return { nNegitive: true };
@@ -54,7 +54,7 @@ export class ResourceAllocateComponent {
       return null;
     }
   }
-
+//this function get invoked when user clicks on submit button
   onSubmit() {
     if (this.itemForm.valid) {
       this.httpService.allocateResources(this.itemForm.value.event.eventID, this.itemForm.value.resource.resourceID, this.itemForm.value).subscribe(

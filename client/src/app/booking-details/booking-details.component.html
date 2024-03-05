@@ -39,18 +39,18 @@
                     <tbody>
                         <tr *ngFor="let event of eventObj">
                             <td>{{event.eventID}}</td>
-                            <td>{{event.title}}</td>
-                            <td>{{event.description}}</td>
-                            <td>{{event.dateTime | date:'dd-MMM-yyyy'}}</td>
-                            <td>{{event.location}}</td>
-                            <td>{{event.status}}</td>
+                            <td>{{event.title|titlecase}}</td>
+                            <td>{{event.description|titlecase}}</td>
+                            <td>{{event.dateTime | date:'medium'}}</td>
+                            <td>{{event.location|titlecase}}</td>
+                            <td>{{event.status|titlecase}}</td>
                             <td *ngIf="first">
                                 <span *ngFor="let eventObj of listOfAllocation">Quantity:{{eventObj.quantity}}
                                     <div class="card">
                                         <div class="card-body">
                                             <h6>Resource:</h6>
-                                            <p>Name:{{eventObj.resource.name}}</p>
-                                            <p>Type:{{eventObj.resource.type}}</p>
+                                            <p>Name:{{eventObj.resource.name|titlecase}}</p>
+                                            <p>Type:{{eventObj.resource.type|titlecase}}</p>
                                         </div>
                                     </div>
 

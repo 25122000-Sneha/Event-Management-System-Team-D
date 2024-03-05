@@ -40,11 +40,11 @@
                         <tbody>
                             <tr *ngFor="let item of eventObj$ | async">
                                 <td>{{item.eventID}}</td>
-                                <td>{{item.title}}</td>
-                                <td>{{item.description}}</td>
-                                <td>{{item.dateTime | date:'dd-MMM-yyyy'}}</td>
-                                <td>{{item.location}}</td>
-                                <td>{{item.status}}</td>
+                                <td>{{item.title|titlecase}}</td>
+                                <td>{{item.description|titlecase}}</td>
+                                <td>{{item.dateTime | date:'medium'}}</td>
+                                <td>{{item.location|titlecase}}</td>
+                                <td>{{item.status|titlecase}}</td>
                                 <td>
                                     <button (click)="edit(item)" *ngIf="item.eventID" class="btn btn-outline-warning"
                                         [disabled]="item.status==='Complete'">Update</button>

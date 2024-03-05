@@ -22,17 +22,21 @@ export class DashboardComponent {
     this.email = authService.getEmail;
 
   }
+  // load all lists
   ngOnInit(): void {
     this.getUsers();
     this.getEvents();
     this.getAllEvents()
   }
+  // method to get all events for a particular user
   getEvents() {
     this.eventList$ = this.httpService.GetAllevents();
   }
+  // method to get all events
   getUsers() {
     this.userList$ = this.httpService.getAllUser();
   }
+  // method to get all for staff
   getAllEvents() {
     this.eventList2$ = this.httpService.getAllEventsStaff();
   }
